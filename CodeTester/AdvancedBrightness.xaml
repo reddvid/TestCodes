@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="CodeTester.AdvancedBrightness"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CodeTester"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" NavigationCacheMode="Enabled">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <ContinuumNavigationTransitionInfo/>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Padding="24">
+            <RelativePanel>
+                <Button x:Name="btn_back" Height="48" Width="48"
+                        Background="Transparent" FontSize="18" Margin="-12,0" IsHitTestVisible="False"
+                        Content="&#xE10F;" RelativePanel.AlignVerticalCenterWithPanel="True"
+                        FontFamily="Segoe MDL2 Assets"
+                       RelativePanel.AlignLeftWithPanel="True"/>
+                <TextBlock Text="Advanced brightness settings"
+                           RelativePanel.RightOf="btn_back" Margin="12,0"
+                           Style="{ThemeResource TitleTextBlockStyle}" RelativePanel.AlignVerticalCenterWith="btn_back"/>
+            </RelativePanel>
+            <Border Height="24"/>
+            <TextBlock MaxWidth="480" HorizontalAlignment="Left" TextWrapping="Wrap"
+                       Text="Customize brightness levels for the action center brightness button or use the system default levels."/>
+            <Border Height="12"/>
+            <RadioButton x:Name="rb_default" 
+                         Tag="default"
+                         Checked="rb_default_Checked"
+                         GroupName="levels"
+                         Content="System default (steps by 25%)"/>
+            <RadioButton x:Name="rb_custom" 
+                         Tag="custom"
+                         Checked="rb_default_Checked"
+                         GroupName="levels"
+                         Content="Custom level"/>
+            <Border Height="24"/>
+            <StackPanel x:Name="g_custom" MaxWidth="260" 
+                        HorizontalAlignment="Left" Loaded="g_custom_Loaded">
+                <ComboBox x:Name="cb_custom"
+                          Header="Levels:"
+                          Width="180" Loaded="cb_custom_Loaded" SelectionChanged="cb_custom_SelectionChanged">
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                </ComboBox>
+                <StackPanel x:Name="sp_sliders" Margin="0,24" 
+                        Width="340" 
+                        HorizontalAlignment="Left"/>
+            </StackPanel>            
+        </StackPanel>
+    </Grid>
+</Page>
