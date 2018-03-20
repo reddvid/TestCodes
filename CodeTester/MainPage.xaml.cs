@@ -36,49 +36,56 @@ namespace CodeTester
            // fr_content.Navigate(typeof(RadioMobile));
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            var frame = Window.Current.Content as Frame;
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = frame.CanGoBack ?
-                          AppViewBackButtonVisibility.Visible :
-                          AppViewBackButtonVisibility.Collapsed;
-
-            if (helper.KeyExists("radio"))
-            {
-                switch (helper.Read<string>("radio"))
-                {
-                    case "default":
-                        tb_notice.Visibility = Visibility.Collapsed;
-                        slder_def.Opacity = 1.0;
-                        slder_def.IsHitTestVisible = true;
-                        break;
-
-                    case "custom":
-                        tb_notice.Visibility = Visibility.Visible;
-                        slder_def.Opacity = 0.5;
-                        slder_def.IsHitTestVisible = false;
-                        break;
-                }
-            }
-            else
-            {
-                tb_notice.Visibility = Visibility.Collapsed;
-                slder_def.Opacity = 1.0;
-                slder_def.IsHitTestVisible = true;
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
             System.Diagnostics.Process.Start(cplPath, "/name Microsoft.ProgramsAndFeatures");
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);           
+        }
+       
         private void hl_advanced_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdvancedBrightness));
+        }
+
+        private void lv_items_Loaded(object sender, RoutedEventArgs e)
+        {
+            ListView listView = sender as ListView;
+
+            if (listView.Items.Count > 0)
+            {
+                listView.SelectedIndex = 0;
+            }
+        }
+
+        private void lv_items_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView listView = sender as ListView;
+            var item = listView.SelectedItem as ListViewItem;
+
+            switch (item.Tag)
+            {
+                case "display":
+                    fr_view.Navigate(typeof(AdvancedDisplay));
+                    break;
+
+                case "sdk":
+                    fr_view.Navigate(typeof(GetItems));
+                    break;
+
+                case "smithchart":
+                    fr_view.Navigate(typeof(SmithChartTemplate));
+                    break;
+
+                case "convert":
+                    fr_view.Navigate(typeof(ToEngineering));
+                    break;
+
+            }
         }
     }
 }

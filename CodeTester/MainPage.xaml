@@ -12,32 +12,20 @@
             <ColumnDefinition Width="320"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <StackPanel Padding="24">
-                <TextBlock Text="Display" Style="{ThemeResource SubheaderTextBlockStyle}"/>
-                <TextBlock Text="Brightness and color" Margin="0,12"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                <TextBlock x:Name="tb_notice" 
-                           Text="*Using custom levels" 
-                           Style="{ThemeResource BodyTextBlockStyle}"
-                           Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"/>
-                <Slider x:Name="slder_def" Maximum="100" 
-                        Minimum="0"
-                        Header="Change brightness" 
-                        Width="260" Value="25"
-                        HorizontalAlignment="Left"/>
-                <HyperlinkButton x:Name="hl_advanced" Click="hl_advanced_Click" 
-                                 Content="Advanced brightness settings" 
-                                 Style="{ThemeResource TextBlockButtonStyle}"/>
-                <Border Height="24"/>
-                <ToggleSwitch Header="Night light"/>
-                <HyperlinkButton Content="Night light settings" 
-                                 Style="{ThemeResource TextBlockButtonStyle}"/>
-
-                <Border Height="24"/>
-                <TextBlock Text="Other settings omitted"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            </StackPanel>
-        </Grid>
+        <ListView x:Name="lv_items" 
+                  Padding="0,24"
+                  Loaded="lv_items_Loaded" 
+                  SelectionChanged="lv_items_SelectionChanged">
+            <ListViewItem Tag="display" Content="Advanced Display"/>
+            <ListViewItem Tag="sdk" Content="Get SDK items"/>
+            <ListViewItem Tag="smithchart" Content="Smith Chart Printer"/>
+            <ListViewItem Tag="convert" Content="To Engineering"/>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Padding="24,0"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Frame x:Name="fr_view" Grid.Column="1"/>
     </Grid>
 </Page>
