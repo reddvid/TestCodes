@@ -5,7 +5,11 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Input.Inking;
 using Windows.UI.Xaml;
+using Windows.UI.Input.Inking.Analysis;
+using Windows.UI.Xaml.Shapes;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
@@ -27,7 +31,26 @@ namespace CodeTester
         {
             this.InitializeComponent();
 
-            // img_chart.Source = new SvgImageSource(new Uri("ms-appx:///Assets/smith_chart02.svg", UriKind.Absolute));
+            // Set supported inking device types.
+            inkcanvas.InkPresenter.InputDeviceTypes =
+        Windows.UI.Core.CoreInputDeviceTypes.Mouse |
+        Windows.UI.Core.CoreInputDeviceTypes.Touch |
+        Windows.UI.Core.CoreInputDeviceTypes.Pen;
+
+            // Set initial ink stroke attributes.
+            InkDrawingAttributes drawingAttributes = new InkDrawingAttributes();
+            drawingAttributes.Color = Windows.UI.Colors.Black;
+            drawingAttributes.IgnorePressure = false;
+            drawingAttributes.FitToCurve = true;
+            inkcanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
+
+
+            img_chart.Source = new BitmapImage(new Uri("ms-appx:///Assets/smith_chart.png", UriKind.Absolute));
+        }
+
+        private void Grid_Holding(object sender, HoldingRoutedEventArgs e)
+        {
+
         }
     }
 }

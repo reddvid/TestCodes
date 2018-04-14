@@ -26,6 +26,7 @@ namespace CodeTester
     public sealed partial class GetItems : Page
     {
         List<string> _items = new List<string>();
+        List<string> _items2 = new List<string>();
         RoamingObjectStorageHelper helper = new RoamingObjectStorageHelper();
 
         public GetItems()
@@ -36,15 +37,14 @@ namespace CodeTester
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            tb_code.Text = await File.ReadAllTextAsync(@"codes.txt");
         }
       
         private async void btn_start_Click(object sender, RoutedEventArgs e)
         {                     
             _items.Clear();
+            _items2.Clear();
 
-            string[] readTxt = await File.ReadAllLinesAsync(@"codes.txt");
+            string[] readTxt = File.ReadAllLines(@"APICodes/17120.txt");
             foreach (var line in readTxt)
             {
                 if (line.Contains("namespace") && line.Contains(@"{"))
@@ -52,6 +52,18 @@ namespace CodeTester
                     _items.Add(GetBetween(line));
                 }
                 lv_items.ItemsSource = _items;
+                lv_items.Header = "17120 " + _items.Count;
+            }
+
+            string[] readTxt2 = File.ReadAllLines(@"APICodes/17125.txt");
+            foreach (var line in readTxt)
+            {
+                if (line.Contains("namespace") && line.Contains(@"{"))
+                {
+                    _items2.Add(GetBetween(line));
+                }
+                lv_items2.ItemsSource = _items2;
+                lv_items2.Header = "17125 " + _items2.Count;
             }
         }
 

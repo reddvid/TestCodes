@@ -11,7 +11,7 @@
     <AssemblyName>CodeTester</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17115.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -105,6 +105,9 @@
     <Compile Include="GetItems.xaml.cs">
       <DependentUpon>GetItems.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI.xaml.cs">
+      <DependentUpon>GUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,9 @@
     </Compile>
     <Compile Include="SmithChartTemplate.xaml.cs">
       <DependentUpon>SmithChartTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TilePinner.xaml.cs">
+      <DependentUpon>TilePinner.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToEngineering.xaml.cs">
       <DependentUpon>ToEngineering.xaml</DependentUpon>
@@ -126,6 +132,12 @@
     <None Include="CodeTester_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="APICodes\17120.txt" />
+    <Content Include="APICodes\17125.txt" />
+    <Content Include="Assets\devenv.exe" />
+    <Content Include="Assets\smith_chart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\smith_chart.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -133,7 +145,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="codes.txt">
+    <Content Include="APICodes\17115.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Properties\Default.rd.xml" />
@@ -162,6 +174,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SmithChartTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TilePinner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

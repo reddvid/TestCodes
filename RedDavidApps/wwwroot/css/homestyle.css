@@ -2,7 +2,7 @@
 /*------------------------- Layout styles ------------------------*/
 body {
     margin: 0;
-    background: url(../images/bg-body.gif) repeat-x #000000;
+    background: #dedede;
 }
 
 .page {
@@ -11,6 +11,7 @@ body {
     padding: 0 5px;
     margin: 0 auto;
     position: center;
+    background: #dedede;
 }
 
 /*------------------------- Font ------------------------*/
@@ -24,18 +25,29 @@ body {
 }
 
 /*------------------------- Sidebar ------------------------*/
-.sidebar {
-    position: fixed;
+.content {    
     height: 100%;
     top: 0; /* Stay at the top */
     left: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
     z-index: 1;
     padding: 24px;
-    width: 320px;
 }
 
-    .sidebar div#logo {
+    .content h2 {
+        color: #cf3d01;
+        font-family: RokkittRegular;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 36px;
+        outline: none;
+        text-decoration: none;
+        position: relative;
+        text-align: center;
+        padding: 24px 0 0 0;
+    }
+
+    .content div#logo {
         background: url(../images/interface.png) no-repeat 0 -142px;
         height: 60px;
         padding: 24px 0 0;
@@ -43,7 +55,7 @@ body {
         top: 0;
     }
 
-        .sidebar div#logo a {
+        .content div#logo a {
             display: block;
             height: 60px;
             margin: 0 auto;
@@ -51,11 +63,11 @@ body {
             width: 60px;
         }
 
-            .sidebar div#logo a img {
+            .content div#logo a img {
                 border: 0;
             }
 
-    .sidebar ul.navigation {
+    .content ul.navigation {
         background: url(../images/border-dashed.gif) repeat-x left bottom;
         list-style: none;
         margin: 40px auto;
@@ -64,20 +76,20 @@ body {
         position: relative;
     }
 
-        .sidebar ul.navigation li {
+        .content ul.navigation li {
             height: 36px;
             margin: 0 0 10px;
         }
 
-            .sidebar ul.navigation li.selected {
+            .content ul.navigation li.selected {
                 background: url(../images/interface.gif) no-repeat;
             }
 
-                .sidebar ul.navigation li.selected a, .sidebar ul.navigation li a:hover {
+                .content ul.navigation li.selected a, .content ul.navigation li a:hover {
                     color: #801002;
                 }
 
-            .sidebar ul.navigation li a {
+            .content ul.navigation li a {
                 color: #cf3d01;
                 font-family: RokkittRegular;
                 font-size: 24px;
@@ -87,7 +99,7 @@ body {
                 text-decoration: none;
             }
 
-    .sidebar div.connect {
+    .content div.connect {
         background: url(../images/border-dashed.gif) repeat-x center bottom;
         overflow: hidden;
         top: 0;
@@ -96,7 +108,7 @@ body {
         text-align: center;
     }
 
-        .sidebar div.connect a {
+        .content div.connect a {
             display: block;
             float: left;
             outline: none;
@@ -104,41 +116,31 @@ body {
             text-indent: -99999px;
         }
 
-            .sidebar div.connect a#facebook {
+            .content div.connect a#facebook {
                 background: url(../images/fb.svg) no-repeat;
                 height: 26px;
                 margin: 0 0 0 0px;
                 width: 37px;
             }
 
-            .sidebar div.connect a#twitter {
+            .content div.connect a#twitter {
                 background: url(../images/twitter.svg) no-repeat;
                 height: 26px;
                 margin: 0 0 0 10px;
                 width: 37px;
             }
 
-            .sidebar div.connect a#instagram {
+            .content div.connect a#instagram {
                 background: url(../images/ig.svg) no-repeat;
                 height: 26px;
                 margin: 0 0 0 10px;
                 width: 37px;
             }
 
-    .sidebar p {
+    .content p {
         color: #f99d20;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 12px;
         margin: 24px auto;
         text-align: center;
     }
-
-/*------------------------- Content ------------------------*/
-.content {
-    padding: 0 24px;
-    margin-left: 320px;
-}
-
-.content .blog{
-    background: #dedede;
-}

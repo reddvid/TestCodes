@@ -32,11 +32,7 @@ namespace CodeTester
             // Load drives
             List<string> diskList = new List<string>();
 
-            foreach (var disk in DriveInfo.GetDrives())
-            {
-                diskList.Add(String.Format("{0} - {1}/{2}", disk.Name, disk.AvailableFreeSpace, disk.TotalSize));
-            }
-            cbx_folders.ItemsSource = diskList;
+           
         }
     }
 }

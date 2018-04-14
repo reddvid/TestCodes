@@ -65,7 +65,16 @@ namespace CodeTester
             {
                 myResult = myValue / units[i];
 
-                myString += myResult.ToString() + symbols[i] + "\n";
+                if (Math.Round(myResult, 2) < 1000 && Math.Round(myResult, 2) > 0)
+                {
+                    myString = String.Empty;
+                    myString += String.Format("{0} {1}",  Math.Round(myResult, 2).ToString(), symbols[i]);
+                }
+                else if (myResult < 0)
+                {
+                    myString = String.Empty;
+                    myString += String.Format("{0} {1}",myResult, symbols[i]);
+                }
             }
 
             return myString;

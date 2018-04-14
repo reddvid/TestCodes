@@ -7,25 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="320"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ListView x:Name="lv_items" 
-                  Padding="0,24"
-                  Loaded="lv_items_Loaded" 
-                  SelectionChanged="lv_items_SelectionChanged">
-            <ListViewItem Tag="display" Content="Advanced Display"/>
-            <ListViewItem Tag="sdk" Content="Get SDK items"/>
-            <ListViewItem Tag="smithchart" Content="Smith Chart Printer"/>
-            <ListViewItem Tag="convert" Content="To Engineering"/>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" Padding="24,0"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Frame x:Name="fr_view" Grid.Column="1"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <NavigationView
+            SelectionChanged="NavigationView_SelectionChanged"
+            Loaded="NavigationView_Loaded">
+            
+            
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="gui" Content="GUI Test"/>
+                <NavigationViewItem Tag="display" Content="Advanced Display"/>
+                <NavigationViewItem Tag="sdk" Content="Get SDK items"/>
+                <NavigationViewItem Tag="smithchart" Content="Smith Chart Printer"/>
+                <NavigationViewItem Tag="convert" Content="To Engineering"/>
+                <NavigationViewItem Tag="tiles" Content="Tile Pinner"/>
+            </NavigationView.MenuItems>
+
+          
+                <Frame x:Name="fr_view" Grid.Column="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  Padding="24">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition >
+                                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                    <DrillInNavigationTransitionInfo/>
+                                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                            </NavigationThemeTransition>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+        </NavigationView>
     </Grid>
 </Page>

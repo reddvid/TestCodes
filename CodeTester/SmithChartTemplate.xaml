@@ -7,16 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image x:Name="img_chart"
-               HorizontalAlignment="Center" VerticalAlignment="Top"
-               Margin="24">
-            <Image.Source>
-                <SvgImageSource RasterizePixelWidth="200"
-                              UriSource="\Assets\smith_chart.svg"/>
-            </Image.Source>
-        </Image>
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="649*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <Button x:Name="btn_print" Content="Print" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Margin="24" Width="108"/>
+                Width="108" Margin="648,0,648,0" Grid.Row="2"/>
+
+        <InkToolbar x:Name="inktb" Orientation="Vertical"
+                   HorizontalAlignment="Center" TargetInkCanvas="{x:Bind inkcanvas}"
+                    VerticalAlignment="Center" Margin="24" Grid.Column="1" Grid.Row="1"/>
+        <Grid Grid.Row="1">
+            <Image x:Name="img_chart" Margin="24" MaxHeight="1024" MaxWidth="1024" IsHitTestVisible="False" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <InkCanvas x:Name="inkcanvas" Margin="24" MaxHeight="1024" MaxWidth="1024"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>

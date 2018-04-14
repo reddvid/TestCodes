@@ -1,0 +1,1120 @@
+﻿namespace Windows.AI.MachineLearning.Preview {
+  public enum FeatureElementKindPreview
+  public interface ILearningModelVariableDescriptorPreview
+  public sealed class ImageVariableDescriptorPreview : ILearningModelVariableDescriptorPreview
+  public sealed class InferencingOptionsPreview
+  public sealed class LearningModelBindingPreview : IIterable<IKeyValuePair<string, object>>, IMapView<string, object>
+  public sealed class LearningModelDescriptionPreview
+  public enum LearningModelDeviceKindPreview
+  public sealed class LearningModelEvaluationResultPreview
+  public enum LearningModelFeatureKindPreview
+  public sealed class LearningModelPreview
+  public sealed class LearningModelVariableDescriptorPreview : ILearningModelVariableDescriptorPreview
+  public struct MachineLearningPreviewContract
+  public sealed class MapVariableDescriptorPreview : ILearningModelVariableDescriptorPreview
+  public sealed class SequenceVariableDescriptorPreview : ILearningModelVariableDescriptorPreview
+  public sealed class TensorVariableDescriptorPreview : ILearningModelVariableDescriptorPreview
+}
+namespace Windows.ApplicationModel {
+  public enum AddResourcePackageOptions : uint
+  public sealed class AppInstance
+  public sealed class PackageCatalog {
+    IAsyncOperationWithProgress<PackageCatalogAddResourcePackageResult, PackageInstallProgress> AddResourcePackageAsync(string resourcePackageFamilyName, string resourceID, AddResourcePackageOptions options);
+    IAsyncOperation<PackageCatalogRemoveResourcePackagesResult> RemoveResourcePackagesAsync(IIterable<Package> resourcePackages);
+  }
+  public sealed class PackageCatalogAddResourcePackageResult
+  public sealed class PackageCatalogRemoveResourcePackagesResult
+  public struct PackageInstallProgress
+  public enum StartupTaskState {
+    EnabledByPolicy = 4,
+  }
+}
+namespace Windows.ApplicationModel.Activation {
+  public enum ActivationKind {
+    BarcodeScannerProvider = 1022,
+  }
+  public sealed class BarcodeScannerPreviewActivatedEventArgs : IActivatedEventArgs, IActivatedEventArgsWithUser, IBarcodeScannerPreviewActivatedEventArgs
+  public interface IBarcodeScannerPreviewActivatedEventArgs : IActivatedEventArgs
+}
+namespace Windows.ApplicationModel.Background {
+  public enum BackgroundAccessRequestKind
+  public static class BackgroundExecutionManager {
+    public static IAsyncOperation<bool> RequestAccessKindAsync(BackgroundAccessRequestKind requestedAccess, string reason);
+  }
+  public sealed class CustomSystemEventTrigger : IBackgroundTrigger
+  public enum CustomSystemEventTriggerRecurrence
+  public sealed class MobileBroadbandPcoDataChangeTrigger : IBackgroundTrigger
+  public sealed class NetworkOperatorDataUsageTrigger : IBackgroundTrigger
+  public sealed class StorageLibraryChangeTrackerTrigger : IBackgroundTrigger
+  public sealed class TetheringEntitlementCheckTrigger : IBackgroundTrigger
+}
+namespace Windows.ApplicationModel.Calls {
+  public enum PhoneCallMedia {
+    AudioAndRealTimeText = 2,
+  }
+  public sealed class VoipCallCoordinator {
+    VoipPhoneCall RequestNewAppInitiatedCall(string context, string contactName, string contactNumber, string serviceName, VoipPhoneCallMedia media);
+    VoipPhoneCall RequestNewIncomingCall(string context, string contactName, string contactNumber, Uri contactImage, string serviceName, Uri brandingImage, string callDetails, Uri ringtone, VoipPhoneCallMedia media, TimeSpan ringTimeout, string contactRemoteId);
+  }
+  public sealed class VoipPhoneCall {
+    void NotifyCallAccepted(VoipPhoneCallMedia media);
+  }
+}
+namespace Windows.ApplicationModel.Core {
+  public sealed class AppListEntry {
+    IAsyncOperation<bool> LaunchForUserAsync(User user);
+  }
+}
+namespace Windows.ApplicationModel.DataTransfer {
+  public sealed class DataPackagePropertySet : IIterable<IKeyValuePair<string, object>>, IMap<string, object> {
+    string ContentSourceUserActivityJson { get; set; }
+  }
+  public sealed class DataPackagePropertySetView : IIterable<IKeyValuePair<string, object>>, IMapView<string, object> {
+    string ContentSourceUserActivityJson { get; }
+  }
+  public static class StandardDataFormats {
+    public static string UserActivityJsonArray { get; }
+  }
+}
+namespace Windows.ApplicationModel.Store.Preview {
+  public enum StoreSystemFeature {
+    ArchitectureArm64 = 34,
+  }
+}
+namespace Windows.ApplicationModel.Store.Preview.InstallControl {
+  public sealed class AppInstallItem {
+    bool LaunchAfterInstall { get; set; }
+  }
+  public sealed class AppInstallManager {
+    IAsyncOperation<bool> GetIsPackageIdentityAllowedToInstallAsync(string correlationVector, string packageIdentityName, string publisherCertificateName);
+    IAsyncOperation<bool> GetIsPackageIdentityAllowedToInstallForUserAsync(User user, string correlationVector, string packageIdentityName, string publisherCertificateName);
+    IAsyncOperation<IVectorView<AppInstallItem>> SearchForAllUpdatesAsync(string correlationVector, string clientId, AppUpdateOptions updateOptions);
+    IAsyncOperation<IVectorView<AppInstallItem>> SearchForAllUpdatesForUserAsync(User user, string correlationVector, string clientId, AppUpdateOptions updateOptions);
+    IAsyncOperation<AppInstallItem> SearchForUpdatesAsync(string productId, string skuId, string correlationVector, string clientId, AppUpdateOptions updateOptions);
+    IAsyncOperation<AppInstallItem> SearchForUpdatesForUserAsync(User user, string productId, string skuId, string correlationVector, string clientId, AppUpdateOptions updateOptions);
+    IAsyncOperation<IVectorView<AppInstallItem>> StartProductInstallAsync(string productId, string flightId, string clientId, string correlationVector, AppInstallOptions installOptions);
+    IAsyncOperation<IVectorView<AppInstallItem>> StartProductInstallForUserAsync(User user, string productId, string flightId, string clientId, string correlationVector, AppInstallOptions installOptions);
+  }
+  public sealed class AppInstallOptions
+  public sealed class AppInstallStatus {
+    bool IsStaged { get; }
+  }
+  public sealed class AppUpdateOptions
+}
+namespace Windows.ApplicationModel.UserActivities {
+  public sealed class UserActivity {
+    public UserActivity(string activityId);
+    string ToJson();
+    public static string ToJsonArray(IIterable<UserActivity> activities);
+    public static UserActivity TryParseFromJson(string json);
+    public static IVector<UserActivity> TryParseFromJsonArray(string json);
+  }
+  public sealed class UserActivityChannel {
+    public static void DisableAutoSessionCreation();
+    IAsyncOperation<IVector<UserActivitySessionHistoryItem>> GetRecentUserActivitiesAsync(int maxUniqueActivities);
+    IAsyncOperation<IVector<UserActivitySessionHistoryItem>> GetSessionHistoryItemsForUserActivityAsync(string activityId, DateTime startTime);
+    public static UserActivityChannel TryGetForWebAccount(WebAccount account);
+  }
+  public sealed class UserActivityRequest
+  public sealed class UserActivityRequestedEventArgs
+  public sealed class UserActivityRequestManager
+  public sealed class UserActivitySessionHistoryItem
+  public sealed class UserActivityVisualElements {
+    string AttributionDisplayText { get; set; }
+  }
+}
+namespace Windows.Devices.Bluetooth {
+  public sealed class BluetoothAdapter {
+    bool AreClassicSecureConnectionsSupported { get; }
+    bool AreLowEnergySecureConnectionsSupported { get; }
+  }
+  public sealed class BluetoothDevice : IClosable {
+    bool WasSecureConnectionUsedForPairing { get; }
+  }
+  public sealed class BluetoothLEDevice : IClosable {
+    bool WasSecureConnectionUsedForPairing { get; }
+  }
+}
+namespace Windows.Devices.Display {
+  public sealed class DisplayMonitor
+  public enum DisplayMonitorConnectionKind
+  public enum DisplayMonitorDescriptorKind
+  public enum DisplayMonitorPhysicalConnectorKind
+  public enum DisplayMonitorUsageKind
+}
+namespace Windows.Devices.Input.Preview {
+  public enum GazeDeviceConfigurationStatePreview
+  public sealed class GazeDevicePreview
+  public sealed class GazeDeviceWatcherAddedPreviewEventArgs
+  public sealed class GazeDeviceWatcherPreview
+  public sealed class GazeDeviceWatcherRemovedPreviewEventArgs
+  public sealed class GazeDeviceWatcherUpdatedPreviewEventArgs
+  public sealed class GazeEnteredPreviewEventArgs
+  public sealed class GazeExitedPreviewEventArgs
+  public sealed class GazeInputSourcePreview
+  public sealed class GazeMovedPreviewEventArgs
+  public sealed class GazePointPreview
+}
+namespace Windows.Devices.PointOfService {
+  public sealed class BarcodeScannerReport {
+    public BarcodeScannerReport(uint scanDataType, IBuffer scanData, IBuffer scanDataLabel);
+  }
+  public sealed class ClaimedBarcodeScanner : IClosable {
+    bool IsVideoPreviewShownOnEnable { get; set; }
+    void HideVideoPreview();
+    IAsyncOperation<bool> ShowVideoPreviewAsync();
+  }
+  public sealed class UnifiedPosErrorData {
+    public UnifiedPosErrorData(string message, UnifiedPosErrorSeverity severity, UnifiedPosErrorReason reason, uint extendedReason);
+  }
+}
+namespace Windows.Devices.PointOfService.Provider {
+  public sealed class BarcodeScannerDisableScannerRequest
+  public sealed class BarcodeScannerDisableScannerRequestEventArgs
+  public sealed class BarcodeScannerEnableScannerRequest
+  public sealed class BarcodeScannerEnableScannerRequestEventArgs
+  public sealed class BarcodeScannerGetSymbologyAttributesRequest
+  public sealed class BarcodeScannerGetSymbologyAttributesRequestEventArgs
+  public sealed class BarcodeScannerHideVideoPreviewRequest
+  public sealed class BarcodeScannerHideVideoPreviewRequestEventArgs
+  public sealed class BarcodeScannerProviderConnection : IClosable
+  public sealed class BarcodeScannerProviderTriggerDetails
+  public sealed class BarcodeScannerSetActiveSymbologiesRequest
+  public sealed class BarcodeScannerSetActiveSymbologiesRequestEventArgs
+  public sealed class BarcodeScannerSetSymbologyAttributesRequest
+  public sealed class BarcodeScannerSetSymbologyAttributesRequestEventArgs
+  public sealed class BarcodeScannerStartSoftwareTriggerRequest
+  public sealed class BarcodeScannerStartSoftwareTriggerRequestEventArgs
+  public sealed class BarcodeScannerStopSoftwareTriggerRequest
+  public sealed class BarcodeScannerStopSoftwareTriggerRequestEventArgs
+  public enum BarcodeScannerTriggerState
+  public sealed class BarcodeSymbologyAttributesBuilder
+}
+namespace Windows.Foundation.Numerics {
+  public struct Rational
+}
+namespace Windows.Globalization {
+  public static class ApplicationLanguages {
+    public static IVectorView<string> GetLanguagesForUser(User user);
+  }
+  public sealed class Language {
+    LanguageLayoutDirection LayoutDirection { get; }
+  }
+  public enum LanguageLayoutDirection
+}
+namespace Windows.Graphics {
+  public struct DisplayAdapterId
+  public interface IGeometrySource2D
+}
+namespace Windows.Graphics.Capture {
+  public sealed class Direct3D11CaptureFrame : IClosable
+  public sealed class Direct3D11CaptureFramePool : IClosable
+  public sealed class GraphicsCaptureItem
+  public sealed class GraphicsCapturePicker
+  public sealed class GraphicsCaptureSession : IClosable
+}
+namespace Windows.Graphics.DirectX {
+  public enum DirectXColorSpace
+}
+namespace Windows.Graphics.Display {
+  public sealed class AdvancedColorInfo
+  public enum AdvancedColorKind
+  public sealed class BrightnessOverrideSettings
+  public sealed class ColorOverrideSettings
+  public enum DisplayBrightnessOverrideScenario
+  public enum DisplayColorOverrideScenario
+  public sealed class DisplayEnhancementOverride
+  public sealed class DisplayEnhancementOverrideCapabilities
+  public sealed class DisplayEnhancementOverrideCapabilitiesChangedEventArgs
+  public sealed class DisplayInformation {
+    event TypedEventHandler<DisplayInformation, object> AdvancedColorInfoChanged;
+    AdvancedColorInfo GetAdvancedColorInfo();
+  }
+  public enum HdrMetadataFormat
+  public struct NitRange
+}
+namespace Windows.Graphics.Holographic {
+  public sealed class HolographicCamera {
+    bool CanOverrideViewport { get; }
+  }
+  public sealed class HolographicCameraPose {
+    void OverrideProjectionTransform(HolographicStereoTransform projectionTransform);
+    void OverrideViewport(Rect leftViewport, Rect rightViewport);
+    void OverrideViewTransform(SpatialCoordinateSystem coordinateSystem, HolographicStereoTransform coordinateSystemToViewTransform);
+  }
+  public sealed class HolographicFramePresentationMonitor : IClosable
+  public sealed class HolographicFramePresentationReport
+  public sealed class HolographicSpace {
+    HolographicSpaceUserPresence UserPresence { get; }
+    event TypedEventHandler<HolographicSpace, object> UserPresenceChanged;
+    HolographicFramePresentationMonitor CreateFramePresentationMonitor(uint maxQueuedReports);
+    void WaitForNextFrameReady();
+    void WaitForNextFrameReadyWithHeadStart(TimeSpan requestedHeadStartDuration);
+  }
+  public enum HolographicSpaceUserPresence
+}
+namespace Windows.Graphics.Imaging {
+  public enum BitmapPixelFormat {
+    P010 = 104,
+  }
+}
+namespace Windows.Graphics.Printing {
+  public sealed class PrintPageRange
+  public sealed class PrintPageRangeOptions
+  public sealed class PrintTaskOptions : IPrintTaskOptionsCore, IPrintTaskOptionsCoreProperties, IPrintTaskOptionsCoreUIConfiguration {
+    IVector<PrintPageRange> CustomPageRanges { get; }
+    PrintPageRangeOptions PageRangeOptions { get; }
+  }
+  public static class StandardPrintTaskOptions {
+    public static string CustomPageRanges { get; }
+  }
+}
+namespace Windows.Graphics.Printing.OptionDetails {
+  public sealed class PrintBindingOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintBorderingOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintCollationOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintColorModeOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintCopiesOptionDetails : IPrintNumberOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintCustomItemListOptionDetails : IPrintCustomOptionDetails, IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+    void AddItem(string itemId, string displayName, string description, IRandomAccessStreamWithContentType icon);
+  }
+  public sealed class PrintCustomTextOptionDetails : IPrintCustomOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintCustomToggleOptionDetails : IPrintCustomOptionDetails, IPrintOptionDetails
+  public sealed class PrintDuplexOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintHolePunchOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintMediaSizeOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintMediaTypeOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public enum PrintOptionType {
+    Toggle = 4,
+  }
+  public sealed class PrintOrientationOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintPageRangeOptionDetails : IPrintOptionDetails
+  public sealed class PrintQualityOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintStapleOptionDetails : IPrintItemListOptionDetails, IPrintOptionDetails {
+    string Description { get; set; }
+    string WarningText { get; set; }
+  }
+  public sealed class PrintTaskOptionDetails : IPrintTaskOptionsCore, IPrintTaskOptionsCoreUIConfiguration {
+    PrintCustomToggleOptionDetails CreateToggleOption(string optionId, string displayName);
+  }
+}
+namespace Windows.Management.Deployment {
+  public sealed class PackageManager {
+    IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> RequestAddPackageAsync(Uri packageUri, IIterable<Uri> dependencyPackageUris, DeploymentOptions deploymentOptions, PackageVolume targetVolume, IIterable<string> optionalPackageFamilyNames, IIterable<Uri> relatedPackageUris, IIterable<Uri> packageUrisToInstall);
+  }
+}
+namespace Windows.Management.Update {
+  public sealed class PreviewBuildsManager
+  public sealed class PreviewBuildsState
+}
+namespace Windows.Media {
+  public sealed class VideoFrame : IClosable, IMediaFrame {
+    IAsyncAction CopyToAsync(VideoFrame frame, IReference<BitmapBounds> sourceBounds, IReference<BitmapBounds> destinationBounds);
+    public static VideoFrame CreateAsDirect3D11SurfaceBacked(DirectXPixelFormat format, int width, int height);
+    public static VideoFrame CreateAsDirect3D11SurfaceBacked(DirectXPixelFormat format, int width, int height, IDirect3DDevice device);
+    public static VideoFrame CreateWithDirect3D11Surface(IDirect3DSurface surface);
+    public static VideoFrame CreateWithSoftwareBitmap(SoftwareBitmap bitmap);
+  }
+}
+namespace Windows.Media.Audio {
+  public sealed class AudioGraph : IClosable {
+    IAsyncOperation<CreateMediaSourceAudioInputNodeResult> CreateMediaSourceAudioInputNodeAsync(MediaSource mediaSource);
+    IAsyncOperation<CreateMediaSourceAudioInputNodeResult> CreateMediaSourceAudioInputNodeAsync(MediaSource mediaSource, AudioNodeEmitter emitter);
+  }
+  public sealed class AudioGraphSettings {
+    double MaxPlaybackSpeedFactor { get; set; }
+  }
+  public sealed class AudioStateMonitor
+  public sealed class CreateMediaSourceAudioInputNodeResult
+  public sealed class MediaSourceAudioInputNode : IAudioInputNode, IAudioInputNode2, IAudioNode, IClosable
+  public enum MediaSourceAudioInputNodeCreationStatus
+}
+namespace Windows.Media.Capture {
+  public sealed class CapturedFrame : IClosable, IContentTypeProvider, IInputStream, IOutputStream, IRandomAccessStream, IRandomAccessStreamWithContentType {
+    BitmapPropertySet BitmapProperties { get; }
+    CapturedFrameControlValues ControlValues { get; }
+  }
+  public enum KnownVideoProfile {
+    HdrWithWcgPhoto = 8,
+    HdrWithWcgVideo = 7,
+    HighFrameRate = 5,
+    VariablePhotoSequence = 6,
+    VideoHdr8 = 9,
+  }
+  public sealed class MediaCaptureSettings {
+    IDirect3DDevice Direct3D11Device { get; }
+  }
+  public sealed class MediaCaptureVideoProfile {
+    IVectorView<MediaFrameSourceInfo> FrameSourceInfos { get; }
+    IMapView<Guid, object> Properties { get; }
+  }
+  public sealed class MediaCaptureVideoProfileMediaDescription {
+    IMapView<Guid, object> Properties { get; }
+    string Subtype { get; }
+  }
+}
+namespace Windows.Media.Capture.Frames {
+  public sealed class AudioMediaFrame
+  public sealed class MediaFrameFormat {
+    AudioEncodingProperties AudioEncodingProperties { get; }
+  }
+  public sealed class MediaFrameReference : IClosable {
+    AudioMediaFrame AudioMediaFrame { get; }
+  }
+  public sealed class MediaFrameSourceController {
+    AudioDeviceController AudioDeviceController { get; }
+  }
+  public sealed class MediaFrameSourceInfo {
+    string ProfileId { get; }
+    IVectorView<MediaCaptureVideoProfileMediaDescription> VideoProfileMediaDescription { get; }
+  }
+  public enum MediaFrameSourceKind {
+    Audio = 4,
+    Image = 5,
+  }
+}
+namespace Windows.Media.Core {
+  public sealed class AudioStreamDescriptor : IMediaStreamDescriptor, IMediaStreamDescriptor2 {
+    AudioStreamDescriptor Copy();
+  }
+  public sealed class MediaBindingEventArgs {
+    void SetDownloadOperation(DownloadOperation downloadOperation);
+  }
+  public sealed class MediaSource : IClosable, IMediaPlaybackSource {
+    DownloadOperation DownloadOperation { get; }
+    public static MediaSource CreateFromDownloadOperation(DownloadOperation downloadOperation);
+  }
+  public sealed class TimedMetadataStreamDescriptor : IMediaStreamDescriptor, IMediaStreamDescriptor2
+  public sealed class VideoStreamDescriptor : IMediaStreamDescriptor, IMediaStreamDescriptor2 {
+    VideoStreamDescriptor Copy();
+  }
+}
+namespace Windows.Media.Devices {
+  public sealed class VideoDeviceController : IMediaDeviceController {
+    VideoTemporalDenoisingControl VideoTemporalDenoisingControl { get; }
+  }
+  public sealed class VideoTemporalDenoisingControl
+  public enum VideoTemporalDenoisingMode
+}
+namespace Windows.Media.DialProtocol {
+  public sealed class DialReceiverApp {
+    IAsyncOperation<string> GetUniqueDeviceNameAsync();
+  }
+}
+namespace Windows.Media.Effects {
+  public sealed class VideoTransformEffectDefinition : IVideoEffectDefinition {
+    VideoTransformSphericalProjection SphericalProjection { get; }
+  }
+  public sealed class VideoTransformSphericalProjection
+}
+namespace Windows.Media.MediaProperties {
+  public sealed class AudioEncodingProperties : IMediaEncodingProperties {
+    AudioEncodingProperties Copy();
+  }
+  public sealed class ContainerEncodingProperties : IMediaEncodingProperties {
+    ContainerEncodingProperties Copy();
+  }
+  public sealed class ImageEncodingProperties : IMediaEncodingProperties {
+    ImageEncodingProperties Copy();
+  }
+  public sealed class MediaEncodingProfile {
+    IVector<TimedMetadataStreamDescriptor> GetTimedMetadataTracks();
+    void SetTimedMetadataTracks(IIterable<TimedMetadataStreamDescriptor> value);
+  }
+  public static class MediaEncodingSubtypes {
+    public static string P010 { get; }
+  }
+  public enum MediaPixelFormat {
+    P010 = 2,
+  }
+  public sealed class TimedMetadataEncodingProperties : IMediaEncodingProperties
+  public sealed class VideoEncodingProperties : IMediaEncodingProperties {
+    VideoEncodingProperties Copy();
+ }
+}
+namespace Windows.Media.Playback {
+  public sealed class MediaPlaybackSession {
+    MediaRotation PlaybackRotation { get; set; }
+    MediaPlaybackSessionOutputDegradationPolicyState GetOutputDegradationPolicyState();
+  }
+  public sealed class MediaPlaybackSessionOutputDegradationPolicyState
+  public enum MediaPlaybackSessionVideoConstrictionReason
+  public sealed class MediaPlayer : IClosable {
+    AudioStateMonitor AudioStateMonitor { get; }
+  }
+}
+namespace Windows.Media.SpeechSynthesis {
+  public enum SpeechAppendedSilence
+  public enum SpeechPunctuationSilence
+  public sealed class SpeechSynthesizerOptions {
+    SpeechAppendedSilence AppendedSilence { get; set; }
+    SpeechPunctuationSilence PunctuationSilence { get; set; }
+  }
+}
+namespace Windows.Media.Streaming.Adaptive {
+  public sealed class AdaptiveMediaSourceDiagnosticAvailableEventArgs {
+    string ResourceContentType { get; }
+    IReference<TimeSpan> ResourceDuration { get; }
+  }
+  public sealed class AdaptiveMediaSourceDownloadCompletedEventArgs {
+    string ResourceContentType { get; }
+    IReference<TimeSpan> ResourceDuration { get; }
+  }
+  public sealed class AdaptiveMediaSourceDownloadFailedEventArgs {
+    string ResourceContentType { get; }
+    IReference<TimeSpan> ResourceDuration { get; }
+  }
+  public sealed class AdaptiveMediaSourceDownloadRequestedEventArgs {
+    string ResourceContentType { get; }
+    IReference<TimeSpan> ResourceDuration { get; }
+  }
+}
+namespace Windows.Networking.BackgroundTransfer {
+  public sealed class DownloadOperation : IBackgroundTransferOperation, IBackgroundTransferOperationPriority {
+    void MakeCurrentInTransferGroup();
+  }
+  public sealed class UploadOperation : IBackgroundTransferOperation, IBackgroundTransferOperationPriority {
+    void MakeCurrentInTransferGroup();
+  }
+}
+namespace Windows.Networking.Connectivity {
+  public sealed class CellularApnContext {
+    string ProfileName { get; set; }
+  }
+  public sealed class ConnectionProfileFilter {
+    IReference<Guid> PurposeGuid { get; set; }
+  }
+  public sealed class WwanConnectionProfileDetails {
+    WwanNetworkIPKind IPKind { get; }
+    IVectorView<Guid> PurposeGuids { get; }
+  }
+  public enum WwanNetworkIPKind
+}
+namespace Windows.Networking.NetworkOperators {
+  public sealed class ESim
+  public sealed class ESimAddedEventArgs
+  public enum ESimAuthenticationPreference
+  public sealed class ESimDownloadProfileMetadataResult
+  public static class ESimManager
+  public sealed class ESimOperationResult
+  public enum ESimOperationStatus
+  public sealed class ESimPolicy
+  public sealed class ESimProfile
+  public enum ESimProfileClass
+  public struct ESimProfileInstallProgress
+  public sealed class ESimProfileMetadata
+  public enum ESimProfileMetadataState
+  public sealed class ESimProfilePolicy
+  public enum ESimProfileState
+  public sealed class ESimRemovedEventArgs
+  public sealed class ESimServiceInfo
+  public enum ESimState
+  public sealed class ESimUpdatedEventArgs
+  public sealed class ESimWatcher
+  public enum ESimWatcherStatus
+  public sealed class MobileBroadbandAntennaSar {
+    public MobileBroadbandAntennaSar(int antennaIndex, int sarBackoffIndex);
+  }
+  public sealed class MobileBroadbandModem {
+    bool IsInEmergencyCallMode { get; }
+    event TypedEventHandler<MobileBroadbandModem, object> IsInEmergencyCallModeChanged;
+    IAsyncOperation<MobileBroadbandPco> TryGetPcoAsync();
+  }
+  public sealed class MobileBroadbandModemIsolation
+  public sealed class MobileBroadbandPco
+  public sealed class MobileBroadbandPcoDataChangeTriggerDetails
+  public enum NetworkOperatorDataUsageNotificationKind
+  public sealed class NetworkOperatorDataUsageTriggerDetails
+  public sealed class TetheringEntitlementCheckTriggerDetails
+}
+namespace Windows.Networking.Sockets {
+  public sealed class MessageWebSocket : IClosable, IWebSocket {
+    IAsyncOperationWithProgress<uint, uint> SendFinalFrameAsync(IBuffer data);
+    IAsyncOperationWithProgress<uint, uint> SendNonfinalFrameAsync(IBuffer data);
+  }
+  public sealed class ServerMessageWebSocket : IClosable
+  public sealed class ServerMessageWebSocketControl
+  public sealed class ServerMessageWebSocketInformation
+  public sealed class ServerStreamWebSocket : IClosable
+  public sealed class ServerStreamWebSocketInformation
+}
+namespace Windows.Networking.Vpn {
+  public sealed class VpnChannel {
+    object CurrentRequestTransportContext { get; }
+    void AddAndAssociateTransport(object transport, object context);
+    ControlChannelTriggerStatus GetSlotTypeForTransportContext(object context);
+    void ReplaceAndAssociateTransport(object transport, object context);
+    void StartReconnectingTransport(object transport, object context);
+    void StartWithTrafficFilter(IIterable<HostName> assignedClientIpv4Addresses, IIterable<HostName> assignedClientIpv6Addresses, VpnInterfaceId vpninterfaceId, VpnRouteAssignment assignedRoutes, VpnDomainNameAssignment assignedNamespace, uint mtuSize, uint maxFrameSize, bool reserved, IIterable<object> transports, VpnTrafficFilterAssignment assignedTrafficFilters);
+  }
+  public sealed class VpnPacketBuffer {
+    object TransportContext { get; set; }
+  }
+}
+namespace Windows.Security.Authentication.Identity.Provider {
+  public enum SecondaryAuthenticationFactorAuthenticationMessage {
+    CanceledByUser = 22,
+    CenterHand = 23,
+    ConnectionRequired = 20,
+    DeviceUnavailable = 28,
+    MoveHandCloser = 24,
+    MoveHandFarther = 25,
+    PlaceHandAbove = 26,
+    RecognitionFailed = 27,
+    TimeLimitExceeded = 21,
+  }
+}
+namespace Windows.Security.Authentication.Web.Core {
+  public sealed class FindAllAccountsResult
+  public enum FindAllWebAccountsStatus
+  public static class WebAuthenticationCoreManager {
+    public static IAsyncOperation<FindAllAccountsResult> FindAllAccountsAsync(WebAccountProvider provider);
+    public static IAsyncOperation<FindAllAccountsResult> FindAllAccountsAsync(WebAccountProvider provider, string clientId);
+    public static IAsyncOperation<WebAccountProvider> FindSystemAccountProviderAsync(string webAccountProviderId);
+    public static IAsyncOperation<WebAccountProvider> FindSystemAccountProviderAsync(string webAccountProviderId, string authority);
+    public static IAsyncOperation<WebAccountProvider> FindSystemAccountProviderAsync(string webAccountProviderId, string authority, User user);
+  }
+}
+namespace Windows.Security.Authentication.Web.Provider {
+  public sealed class WebProviderTokenRequest {
+    string ApplicationPackageFamilyName { get; }
+    string ApplicationProcessName { get; }
+    IAsyncOperation<bool> CheckApplicationForCapabilityAsync(string capabilityName);
+  }
+}
+namespace Windows.Security.Credentials {
+  public sealed class WebAccountProvider {
+    bool IsSystemProvider { get; }
+  }
+}
+namespace Windows.Services.Maps {
+  public sealed class MapRouteDrivingOptions {
+    IReference<DateTime> DepartureTime { get; set; }
+  }
+  public sealed class PlaceInfo {
+    public static PlaceInfo CreateFromAddress(string displayAddress);
+    public static PlaceInfo CreateFromAddress(string displayAddress, string displayName);
+  }
+}
+namespace Windows.Services.Store {
+  public sealed class StoreCanAcquireLicenseResult
+  public enum StoreCanLicenseStatus
+  public sealed class StoreContext {
+    bool CanSilentlyDownloadStorePackageUpdates { get; }
+    IAsyncOperation<StoreCanAcquireLicenseResult> CanAcquireStoreLicenseAsync(string productStoreId);
+    IAsyncOperation<StoreCanAcquireLicenseResult> CanAcquireStoreLicenseForOptionalPackageAsync(Package optionalPackage);
+    IAsyncOperationWithProgress<StorePackageUpdateResult, StorePackageUpdateStatus> DownloadAndInstallStorePackagesAsync(IIterable<string> storeIds);
+    IAsyncOperation<IVectorView<StoreQueueItem>> GetAssociatedStoreQueueItemsAsync();
+    IAsyncOperation<StoreProductQueryResult> GetStoreProductsAsync(IIterable<string> productKinds, IIterable<string> storeIds, StoreProductOptions storeProductOptions);
+    IAsyncOperation<IVectorView<StoreQueueItem>> GetStoreQueueItemsAsync(IIterable<string> storeIds);
+    IAsyncOperationWithProgress<StorePackageUpdateResult, StorePackageUpdateStatus> RequestDownloadAndInstallStorePackagesAsync(IIterable<string> storeIds, StorePackageInstallOptions storePackageInstallOptions);
+    IAsyncOperation<StoreUninstallStorePackageResult> RequestUninstallStorePackageAsync(Package package);
+    IAsyncOperation<StoreUninstallStorePackageResult> RequestUninstallStorePackageByStoreIdAsync(string storeId);
+    IAsyncOperationWithProgress<StorePackageUpdateResult, StorePackageUpdateStatus> TrySilentDownloadAndInstallStorePackageUpdatesAsync(IIterable<StorePackageUpdate> storePackageUpdates);
+    IAsyncOperationWithProgress<StorePackageUpdateResult, StorePackageUpdateStatus> TrySilentDownloadStorePackageUpdatesAsync(IIterable<StorePackageUpdate> storePackageUpdates);
+    IAsyncOperation<StoreUninstallStorePackageResult> UninstallStorePackageAsync(Package package);
+    IAsyncOperation<StoreUninstallStorePackageResult> UninstallStorePackageByStoreIdAsync(string storeId);
+  }
+  public sealed class StorePackageInstallOptions
+  public sealed class StorePackageUpdateResult {
+    IVectorView<StoreQueueItem> StoreQueueItems { get; }
+  }
+  public sealed class StoreProductOptions
+  public sealed class StoreQueueItem
+  public sealed class StoreQueueItemCompletedEventArgs
+  public enum StoreQueueItemExtendedState
+  public enum StoreQueueItemKind
+  public enum StoreQueueItemState
+  public sealed class StoreQueueItemStatus
+  public sealed class StoreUninstallStorePackageResult
+  public enum StoreUninstallStorePackageStatus
+}
+namespace Windows.Storage {
+  public sealed class StorageFolder : IStorageFolder, IStorageFolder2, IStorageFolderQueryOperations, IStorageItem, IStorageItem2, IStorageItemProperties, IStorageItemProperties2, IStorageItemPropertiesWithProvider {
+    StorageLibraryChangeTracker TryGetChangeTracker();
+  }
+}
+namespace Windows.Storage.Provider {
+  public interface IStorageProviderUriSource
+  public sealed class StorageProviderGetContentInfoForPathResult
+  public sealed class StorageProviderGetPathForContentUriResult
+  public enum StorageProviderUriSourceStatus
+}
+namespace Windows.Storage.Search {
+  public sealed class StorageLibraryChangeTrackerTriggerDetails
+}
+namespace Windows.System {
+  public sealed class AppActivationResult
+  public sealed class AppDiagnosticInfo {
+    IAsyncOperation<AppActivationResult> LaunchAsync();
+  }
+  public sealed class AppExecutionStateChangeResult
+  public sealed class AppResourceGroupInfo {
+    IAsyncOperation<AppExecutionStateChangeResult> StartResumeAsync();
+    IAsyncOperation<AppExecutionStateChangeResult> StartSuspendAsync();
+    IAsyncOperation<AppExecutionStateChangeResult> StartTerminateAsync();
+  }
+  public enum AutoUpdateTimeZoneStatus
+  public static class TimeZoneSettings {
+    public static IAsyncOperation<AutoUpdateTimeZoneStatus> AutoUpdateTimeZoneAsync(TimeSpan timeout);
+  }
+}
+namespace Windows.System.Diagnostics {
+  public sealed class DiagnosticInvoker {
+    IAsyncOperationWithProgress<DiagnosticActionResult, DiagnosticActionState> RunDiagnosticActionFromStringAsync(string context);
+  }
+}
+namespace Windows.System.Diagnostics.DevicePortal {
+  public sealed class DevicePortalConnection {
+    ServerMessageWebSocket GetServerMessageWebSocketForRequest(HttpRequestMessage request);
+    ServerMessageWebSocket GetServerMessageWebSocketForRequest(HttpRequestMessage request, SocketMessageType messageType, string protocol);
+    ServerMessageWebSocket GetServerMessageWebSocketForRequest(HttpRequestMessage request, SocketMessageType messageType, string protocol, uint outboundBufferSizeInBytes, uint maxMessageSize, MessageWebSocketReceiveMode receiveMode);
+    ServerStreamWebSocket GetServerStreamWebSocketForRequest(HttpRequestMessage request);
+    ServerStreamWebSocket GetServerStreamWebSocketForRequest(HttpRequestMessage request, string protocol, uint outboundBufferSizeInBytes, bool noDelay);
+  }
+  public sealed class DevicePortalConnectionRequestReceivedEventArgs {
+    bool IsWebSocketUpgradeRequest { get; }
+    IVectorView<string> WebSocketProtocolsRequested { get; }
+    Deferral GetDeferral();
+  }
+}
+namespace Windows.System.Inventory {
+  public sealed class InstalledDesktopApp : IStringable
+}
+namespace Windows.System.Profile {
+  public static class AnalyticsInfo {
+    public static IAsyncOperation<IMapView<string, string>> GetSystemPropertiesAsync(IIterable<string> attributeNames);
+  }
+}
+namespace Windows.System.RemoteSystems {
+  public sealed class RemoteSystem {
+    RemoteSystemPlatform Platform { get; }
+  }
+  public sealed class RemoteSystemEnumerationCompletedEventArgs
+  public enum RemoteSystemPlatform
+  public sealed class RemoteSystemWatcher {
+    event TypedEventHandler<RemoteSystemWatcher, RemoteSystemEnumerationCompletedEventArgs> EnumerationCompleted;
+    event TypedEventHandler<RemoteSystemWatcher, RemoteSystemWatcherErrorOccurredEventArgs> ErrorOccurred;
+  }
+  public enum RemoteSystemWatcherError
+  public sealed class RemoteSystemWatcherErrorOccurredEventArgs
+}
+namespace Windows.System.UserProfile {
+  public static class GlobalizationPreferences {
+    public static GlobalizationPreferencesForUser GetForUser(User user);
+  }
+  public sealed class GlobalizationPreferencesForUser
+}
+namespace Windows.UI.ApplicationSettings {
+  public sealed class AccountsSettingsPane {
+    public static IAsyncAction ShowAddAccountForUserAsync(User user);
+    public static IAsyncAction ShowManageAccountsForUserAsync(User user);
+  }
+  public sealed class AccountsSettingsPaneCommandsRequestedEventArgs {
+    User User { get; }
+  }
+}
+namespace Windows.UI.Composition {
+  public sealed class AnimationController : CompositionObject
+  public enum AnimationControllerProgressBehavior
+  public sealed class BounceScalarNaturalMotionAnimation : ScalarNaturalMotionAnimation
+  public sealed class BounceVector2NaturalMotionAnimation : Vector2NaturalMotionAnimation
+  public sealed class BounceVector3NaturalMotionAnimation : Vector3NaturalMotionAnimation
+  public sealed class CompositionContainerShape : CompositionShape
+  public sealed class CompositionEllipseGeometry : CompositionGeometry
+  public class CompositionGeometry : CompositionObject
+  public class CompositionLight : CompositionObject {
+    bool IsEnabled { get; set; }
+  }
+  public sealed class CompositionLineGeometry : CompositionGeometry
+  public class CompositionObject : IClosable {
+    AnimationController TryGetAnimationController(string propertyName);
+  }
+  public sealed class CompositionPath : IGeometrySource2D
+  public sealed class CompositionPathGeometry : CompositionGeometry
+  public sealed class CompositionRectangleGeometry : CompositionGeometry
+  public sealed class CompositionRoundedRectangleGeometry : CompositionGeometry
+  public class CompositionShape : CompositionObject
+  public sealed class CompositionShapeCollection : CompositionObject, IIterable<CompositionShape>, IVector<CompositionShape>
+  public sealed class CompositionSpriteShape : CompositionShape
+  public enum CompositionStrokeCap
+  public sealed class CompositionStrokeDashArray : CompositionObject, IIterable<float>, IVector<float>
+  public enum CompositionStrokeLineJoin
+  public sealed class CompositionViewBox : CompositionObject
+  public sealed class Compositor : IClosable {
+    string Comment { get; set; }
+    float GlobalPlaybackRate { get; set; }
+    public static float MaxGlobalPlaybackRate { get; }
+    public static float MinGlobalPlaybackRate { get; }
+    BounceScalarNaturalMotionAnimation CreateBounceScalarAnimation();
+    BounceVector2NaturalMotionAnimation CreateBounceVector2Animation();
+    BounceVector3NaturalMotionAnimation CreateBounceVector3Animation();
+    CompositionContainerShape CreateContainerShape();
+    CompositionEllipseGeometry CreateEllipseGeometry();
+    CompositionLineGeometry CreateLineGeometry();
+    CompositionPathGeometry CreatePathGeometry();
+    CompositionPathGeometry CreatePathGeometry(CompositionPath path);
+    PathKeyFrameAnimation CreatePathKeyFrameAnimation();
+    CompositionRectangleGeometry CreateRectangleGeometry();
+    CompositionRoundedRectangleGeometry CreateRoundedRectangleGeometry();
+    ShapeVisual CreateShapeVisual();
+    CompositionSpriteShape CreateSpriteShape();
+    CompositionSpriteShape CreateSpriteShape(CompositionGeometry geometry);
+    CompositionViewBox CreateViewBox();
+    IAsyncAction RequestCommitAsync();
+  }
+  public sealed class PathKeyFrameAnimation : KeyFrameAnimation
+  public sealed class PointLight : CompositionLight {
+    float MaxAttenuationCutoff { get; set; }
+    float MinAttenuationCutoff { get; set; }
+  }
+  public sealed class ShapeVisual : ContainerVisual
+  public sealed class SpotLight : CompositionLight {
+    float MaxAttenuationCutoff { get; set; }
+    float MinAttenuationCutoff { get; set; }
+  }
+}
+namespace Windows.UI.Composition.Core {
+  public sealed class CompositorController : IClosable
+}
+namespace Windows.UI.Composition.Desktop {
+  public sealed class DesktopWindowTarget : CompositionTarget
+}
+namespace Windows.UI.Composition.Diagnostics {
+  public sealed class CompositionDebugHeatMaps
+  public enum CompositionDebugOverdrawContentKinds : uint
+  public sealed class CompositionDebugSettings
+}
+namespace Windows.UI.Composition.Interactions {
+ public enum VisualInteractionSourceRedirectionMode {
+    CapableTouchpadAndPointerWheel = 3,
+    PointerWheelOnly = 2,
+  }
+}
+namespace Windows.UI.Core {
+  public enum AppViewBackButtonVisibility {
+    Disabled = 2,
+  }
+  public sealed class CoreComponentInputSource : ICoreInputSourceBase, ICorePointerInputSource, ICorePointerInputSource2 {
+    DispatcherQueue DispatcherQueue { get; }
+  }
+  public sealed class CoreIndependentInputSource : ICoreInputSourceBase, ICorePointerInputSource, ICorePointerInputSource2 {
+    DispatcherQueue DispatcherQueue { get; }
+  }
+  public interface ICorePointerInputSource2 : ICorePointerInputSource
+}
+namespace Windows.UI.Input.Core {
+  public sealed class RadialControllerIndependentInputSource {
+    DispatcherQueue DispatcherQueue { get; }
+  }
+}
+namespace Windows.UI.Input.Inking {
+  public sealed class InkDrawingAttributes {
+    InkModelerAttributes ModelerAttributes { get; }
+  }
+  public sealed class InkInputConfiguration
+  public sealed class InkModelerAttributes
+  public sealed class InkPresenter {
+    InkInputConfiguration InputConfiguration { get; }
+  }
+}
+namespace Windows.UI.Input.Spatial {
+  public sealed class SpatialInteractionController {
+    BatteryReport TryGetBatteryReport();
+  }
+}
+namespace Windows.UI.Notifications {
+  public sealed class ScheduledToastNotification {
+    IReference<DateTime> ExpirationTime { get; set; }
+  }
+}
+namespace Windows.UI.StartScreen {
+  public sealed class TileMixedRealityModel {
+    TileMixedRealityModelActivationBehavior ActivationBehavior { get; set; }
+  }
+  public enum TileMixedRealityModelActivationBehavior
+}
+namespace Windows.UI.Text {
+  public sealed class ContentLinkInfo
+  public sealed class RichEditTextRange : ITextRange
+  public enum TextRangeUnit {
+    ContentLink = 32,
+  }
+}
+namespace Windows.UI.ViewManagement.Core {
+  public sealed class CoreInputView {
+    event TypedEventHandler<CoreInputView, object> XYFocusTransferredToPrimaryView;
+    event TypedEventHandler<CoreInputView, CoreInputViewTransferringXYFocusEventArgs> XYFocusTransferringFromPrimaryView;
+    bool TryTransferXYFocusToPrimaryView(Rect origin, CoreInputViewXYFocusTransferDirection direction);
+  }
+  public sealed class CoreInputViewTransferringXYFocusEventArgs
+  public enum CoreInputViewXYFocusTransferDirection
+}
+namespace Windows.UI.WebUI {
+  public sealed class WebUIBarcodeScannerPreviewActivatedEventArgs : IActivatedEventArgs, IActivatedEventArgsDeferral, IActivatedEventArgsWithUser, IBarcodeScannerPreviewActivatedEventArgs
+  public sealed class WebUILaunchActivatedEventArgs : IActivatedEventArgs, IActivatedEventArgsDeferral, IActivatedEventArgsWithUser, IApplicationViewActivatedEventArgs, ILaunchActivatedEventArgs, ILaunchActivatedEventArgs2, IPrelaunchActivatedEventArgs {
+    TileActivatedInfo TileActivatedInfo { get; }
+  }
+}
+namespace Windows.UI.Xaml {
+  public sealed class BringIntoViewOptions {
+    double HorizontalAlignmentRatio { get; set; }
+    double HorizontalOffset { get; set; }
+    double VerticalAlignmentRatio { get; set; }
+    double VerticalOffset { get; set; }
+  }
+  public sealed class BringIntoViewRequestedEventArgs : RoutedEventArgs
+  public sealed class ElementSoundPlayer {
+    public static ElementSpatialAudioMode SpatialAudioMode { get; set; }
+  }
+  public enum ElementSpatialAudioMode
+  public enum FocusVisualKind {
+    Reveal = 2,
+  }
+  public class UIElement : DependencyObject {
+    public static RoutedEvent BringIntoViewRequestedEvent { get; }
+    public static RoutedEvent ContextRequestedEvent { get; }
+    KeyboardAcceleratorPlacementMode KeyboardAcceleratorPlacementMode { get; set; }
+    public static DependencyProperty KeyboardAcceleratorPlacementModeProperty { get; }
+    DependencyObject KeyboardAcceleratorPlacementTarget { get; set; }
+    public static DependencyProperty KeyboardAcceleratorPlacementTargetProperty { get; }
+    DependencyObject KeyTipTarget { get; set; }
+    public static DependencyProperty KeyTipTargetProperty { get; }
+    event TypedEventHandler<UIElement, BringIntoViewRequestedEventArgs> BringIntoViewRequested;
+    virtual void OnBringIntoViewRequested(BringIntoViewRequestedEventArgs e);
+    virtual void OnKeyboardAcceleratorInvoked(KeyboardAcceleratorInvokedEventArgs args);
+    public static void RegisterAsScrollPort(UIElement element);
+  }
+}
+namespace Windows.UI.Xaml.Automation {
+  public sealed class AutomationElementIdentifiers {
+    public static AutomationProperty HeadingLevelProperty { get; }
+  }
+  public sealed class AutomationProperties {
+    public static DependencyProperty HeadingLevelProperty { get; }
+    public static AutomationHeadingLevel GetHeadingLevel(DependencyObject element);
+    public static void SetHeadingLevel(DependencyObject element, AutomationHeadingLevel value);
+  }
+}
+namespace Windows.UI.Xaml.Automation.Peers {
+  public enum AutomationHeadingLevel
+  public class AutomationPeer : DependencyObject {
+    AutomationHeadingLevel GetHeadingLevel();
+    virtual AutomationHeadingLevel GetHeadingLevelCore();
+  }
+  public sealed class AutoSuggestBoxAutomationPeer : FrameworkElementAutomationPeer, IInvokeProvider {
+    void Invoke();
+  }
+  public class CalendarDatePickerAutomationPeer : FrameworkElementAutomationPeer, IInvokeProvider, IValueProvider
+  public class TreeViewItemAutomationPeer : ListViewItemAutomationPeer, IExpandCollapseProvider
+  public class TreeViewListAutomationPeer : SelectorAutomationPeer
+}
+namespace Windows.UI.Xaml.Controls {
+  public class AppBarButton : Button, ICommandBarElement, ICommandBarElement2 {
+    string KeyboardAcceleratorTextOverride { get; set; }
+    public static DependencyProperty KeyboardAcceleratorTextOverrideProperty { get; }
+    AppBarButtonTemplateSettings TemplateSettings { get; }
+  }
+  public class AppBarToggleButton : ToggleButton, ICommandBarElement, ICommandBarElement2 {
+    string KeyboardAcceleratorTextOverride { get; set; }
+    public static DependencyProperty KeyboardAcceleratorTextOverrideProperty { get; }
+    AppBarToggleButtonTemplateSettings TemplateSettings { get; }
+  }
+  public sealed class ContentLinkChangedEventArgs
+  public enum ContentLinkChangeKind
+  public sealed class HandwritingPanelClosedEventArgs
+  public sealed class HandwritingPanelOpenedEventArgs
+  public enum HandwritingPanelPlacementAlignment
+  public class HandwritingView : Control
+  public class MediaTransportControls : Control {
+    bool IsCompactOverlayButtonVisible { get; set; }
+    public static DependencyProperty IsCompactOverlayButtonVisibleProperty { get; }
+    bool IsCompactOverlayEnabled { get; set; }
+    public static DependencyProperty IsCompactOverlayEnabledProperty { get; }
+  }
+  public class MenuFlyoutItem : MenuFlyoutItemBase {
+    string KeyboardAcceleratorTextOverride { get; set; }
+    public static DependencyProperty KeyboardAcceleratorTextOverrideProperty { get; }
+    MenuFlyoutItemTemplateSettings TemplateSettings { get; }
+  }
+  public class NavigationView : ContentControl {
+    NavigationViewBackButtonVisible IsBackButtonVisible { get; set; }
+    public static DependencyProperty IsBackButtonVisibleProperty { get; }
+    bool IsBackEnabled { get; set; }
+    public static DependencyProperty IsBackEnabledProperty { get; }
+    string PaneTitle { get; set; }
+    public static DependencyProperty PaneTitleProperty { get; }
+    event TypedEventHandler<NavigationView, NavigationViewBackRequestedEventArgs> BackRequested;
+    event TypedEventHandler<NavigationView, object> PaneClosed;
+    event TypedEventHandler<NavigationView, NavigationViewPaneClosingEventArgs> PaneClosing;
+    event TypedEventHandler<NavigationView, object> PaneOpened;
+    event TypedEventHandler<NavigationView, object> PaneOpening;
+  }
+  public enum NavigationViewBackButtonVisible
+  public sealed class NavigationViewBackRequestedEventArgs
+  public sealed class NavigationViewPaneClosingEventArgs
+ public class RefreshContainer : ContentControl
+  public sealed class RefreshInteractionRatioChangedEventArgs
+  public enum RefreshPullDirection
+  public sealed class RefreshRequestedEventArgs
+  public sealed class RefreshStateChangedEventArgs
+  public class RefreshVisualizer : Control
+  public enum RefreshVisualizerOrientation
+  public enum RefreshVisualizerState
+  public class RichEditBox : Control {
+    SolidColorBrush ContentLinkBackgroundColor { get; set; }
+    public static DependencyProperty ContentLinkBackgroundColorProperty { get; }
+    SolidColorBrush ContentLinkForegroundColor { get; set; }
+    public static DependencyProperty ContentLinkForegroundColorProperty { get; }
+    ContentLinkProviderCollection ContentLinkProviders { get; set; }
+    public static DependencyProperty ContentLinkProvidersProperty { get; }
+    HandwritingView HandwritingView { get; set; }
+    public static DependencyProperty HandwritingViewProperty { get; }
+    bool IsHandwritingViewEnabled { get; set; }
+    public static DependencyProperty IsHandwritingViewEnabledProperty { get; }
+    event TypedEventHandler<RichEditBox, ContentLinkChangedEventArgs> ContentLinkChanged;
+    event TypedEventHandler<RichEditBox, ContentLinkInvokedEventArgs> ContentLinkInvoked;
+  }
+  public class TextBox : Control {
+    HandwritingView HandwritingView { get; set; }
+    public static DependencyProperty HandwritingViewProperty { get; }
+    bool IsHandwritingViewEnabled { get; set; }
+    public static DependencyProperty IsHandwritingViewEnabledProperty { get; }
+  }
+  public class TreeView : Control
+  public sealed class TreeViewCollapsedEventArgs
+  public sealed class TreeViewExpandingEventArgs
+  public class TreeViewItem : ListViewItem
+  public sealed class TreeViewItemInvokedEventArgs
+  public class TreeViewItemTemplateSettings : DependencyObject
+  public class TreeViewList : ListView
+  public class TreeViewNode : DependencyObject
+  public enum TreeViewSelectionMode
+  public sealed class WebView : FrameworkElement {
+    event TypedEventHandler<WebView, WebViewSeparateProcessLostEventArgs> SeparateProcessLost;
+  }
+  public enum WebViewExecutionMode {
+    SeparateProcess = 2,
+  }
+  public enum WebViewPermissionType {
+    ImmersiveView = 6,
+    Screen = 5,
+  }
+  public sealed class WebViewSeparateProcessLostEventArgs
+}
+namespace Windows.UI.Xaml.Controls.Maps {
+  public sealed class MapControl : Control {
+    string Region { get; set; }
+    public static DependencyProperty RegionProperty { get; }
+  }
+  public class MapElement : DependencyObject {
+    bool IsEnabled { get; set; }
+    public static DependencyProperty IsEnabledProperty { get; }
+  }
+}
+namespace Windows.UI.Xaml.Controls.Primitives {
+  public sealed class AppBarButtonTemplateSettings : DependencyObject
+  public sealed class AppBarToggleButtonTemplateSettings : DependencyObject
+  public sealed class MenuFlyoutItemTemplateSettings : DependencyObject
+}
+namespace Windows.UI.Xaml.Documents {
+  public sealed class ContactContentLinkProvider : ContentLinkProvider
+  public sealed class ContentLink : Inline
+  public sealed class ContentLinkInvokedEventArgs
+  public class ContentLinkProvider : DependencyObject
+  public sealed class ContentLinkProviderCollection : IIterable<ContentLinkProvider>, IVector<ContentLinkProvider>
+  public sealed class PlaceContentLinkProvider : ContentLinkProvider
+}
+namespace Windows.UI.Xaml.Input {
+  public sealed class FocusManager {
+    public static IAsyncOperation<FocusMovementResult> TryFocusAsync(DependencyObject element, FocusState value);
+    public static IAsyncOperation<FocusMovementResult> TryMoveFocusAsync(FocusNavigationDirection focusNavigationDirection);
+    public static IAsyncOperation<FocusMovementResult> TryMoveFocusAsync(FocusNavigationDirection focusNavigationDirection, FindNextElementOptions focusNavigationOptions);
+  }
+  public sealed class FocusMovementResult
+  public sealed class GettingFocusEventArgs : RoutedEventArgs {
+    bool TryCancel();
+    bool TrySetNewFocusedElement(DependencyObject element);
+  }
+  public sealed class KeyboardAcceleratorInvokedEventArgs {
+    KeyboardAccelerator KeyboardAccelerator { get; }
+  }
+  public enum KeyboardAcceleratorPlacementMode
+  public sealed class LosingFocusEventArgs : RoutedEventArgs {
+    bool TryCancel();
+    bool TrySetNewFocusedElement(DependencyObject element);
+  }
+}
+namespace Windows.UI.Xaml.Media {
+  public sealed class CompositionTarget {
+    public static event EventHandler<RenderedEventArgs> Rendered;
+  }
+  public sealed class RenderedEventArgs
+}
+namespace Windows.Web.UI {
+  public interface IWebViewControl
+  public sealed class WebViewControlContentLoadingEventArgs
+  public sealed class WebViewControlDeferredPermissionRequest
+  public sealed class WebViewControlDOMContentLoadedEventArgs
+  public sealed class WebViewControlLongRunningScriptDetectedEventArgs
+  public sealed class WebViewControlNavigationCompletedEventArgs
+  public sealed class WebViewControlNavigationStartingEventArgs
+  public sealed class WebViewControlNewWindowRequestedEventArgs
+  public sealed class WebViewControlPermissionRequest
+  public sealed class WebViewControlPermissionRequestedEventArgs
+  public enum WebViewControlPermissionState
+  public enum WebViewControlPermissionType
+  public sealed class WebViewControlScriptNotifyEventArgs
+  public sealed class WebViewControlSettings
+  public sealed class WebViewControlUnsupportedUriSchemeIdentifiedEventArgs
+  public sealed class WebViewControlUnviewableContentIdentifiedEventArgs
+  public sealed class WebViewControlWebResourceRequestedEventArgs
+}
+namespace Windows.Web.UI.Interop {
+  public sealed class WebViewControl : IWebViewControl
+  public sealed class WebViewControlAcceleratorKeyPressedEventArgs
+  public enum WebViewControlAcceleratorKeyRoutingStage
+  public enum WebViewControlMoveFocusReason
+  public sealed class WebViewControlMoveFocusRequestedEventArgs
+  public sealed class WebViewControlProcess
+  public enum WebViewControlProcessCapabilityState
+  public sealed class WebViewControlProcessOptions
+}

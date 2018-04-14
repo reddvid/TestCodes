@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -23,6 +24,9 @@ namespace CodeTester
     /// </summary>
     sealed partial class App : Application
     {
+        private string OPNumber;
+        bool CalledFromSecondaryTile = false;
+        public string _urischeme;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -41,7 +45,9 @@ namespace CodeTester
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
-                       
+
+            // Depending on tile_id and tile_arguments navigate to the page you want
+
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -54,7 +60,7 @@ namespace CodeTester
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
-                }              
+                }
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;

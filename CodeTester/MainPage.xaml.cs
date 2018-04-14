@@ -33,42 +33,14 @@ namespace CodeTester
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-           // fr_content.Navigate(typeof(RadioMobile));
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var cplPath = System.IO.Path.Combine(Environment.SystemDirectory, "control.exe");
-            System.Diagnostics.Process.Start(cplPath, "/name Microsoft.ProgramsAndFeatures");
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);           
-        }
-       
-        private void hl_advanced_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AdvancedBrightness));
-        }
-
-        private void lv_items_Loaded(object sender, RoutedEventArgs e)
-        {
-            ListView listView = sender as ListView;
-
-            if (listView.Items.Count > 0)
-            {
-                listView.SelectedIndex = 0;
-            }
-        }
-
-        private void lv_items_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListView listView = sender as ListView;
-            var item = listView.SelectedItem as ListViewItem;
+            var item = args.SelectedItem as NavigationViewItem;
 
             switch (item.Tag)
             {
+                case "gui":
+                    fr_view.Navigate(typeof(GUI));
+                    break;
+
                 case "display":
                     fr_view.Navigate(typeof(AdvancedDisplay));
                     break;
@@ -85,6 +57,42 @@ namespace CodeTester
                     fr_view.Navigate(typeof(ToEngineering));
                     break;
 
+                case "tiles":
+                    fr_view.Navigate(typeof(TilePinner));
+                    break;
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+        }
+
+        private void hl_advanced_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AdvancedBrightness));
+        }
+          
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NavigationView_Loaded(object sender, RoutedEventArgs e)
+        {
+            // set the initial SelectedItem 
+            foreach (NavigationViewItem item in (sender as NavigationView).MenuItems)
+            {
+                if (item is NavigationViewItem && item.Tag.ToString() == "gui")
+                {
+                    (sender as NavigationView).SelectedItem = item;
+                    break;
+                }
             }
         }
     }
