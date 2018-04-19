@@ -11,7 +11,7 @@
     <AssemblyName>CodeTester</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17125.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -115,6 +115,9 @@
     <Compile Include="RadioMobile.xaml.cs">
       <DependentUpon>RadioMobile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SampleDialog.xaml.cs">
+      <DependentUpon>SampleDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SmithChartTemplate.xaml.cs">
       <DependentUpon>SmithChartTemplate.xaml</DependentUpon>
     </Compile>
@@ -124,17 +127,18 @@
     <Compile Include="ToEngineering.xaml.cs">
       <DependentUpon>ToEngineering.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WebViewer.xaml.cs">
+      <DependentUpon>WebViewer.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="CodeTester_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="APICodes\17120.txt" />
     <Content Include="APICodes\17125.txt" />
-    <Content Include="Assets\devenv.exe" />
     <Content Include="Assets\smith_chart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -186,6 +190,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SampleDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SmithChartTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToEngineering.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

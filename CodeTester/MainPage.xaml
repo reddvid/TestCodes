@@ -7,33 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <NavigationView
-            SelectionChanged="NavigationView_SelectionChanged"
-            Loaded="NavigationView_Loaded">
-            
-            
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <NavigationView x:Name="nvMain" OpenPaneLength="320" IsPaneOpen="True" DoubleTapped="nvMain_DoubleTapped"
+                        SelectionChanged="NavigationView_SelectionChanged"
+                        Loaded="NavigationView_Loaded" AlwaysShowHeader="False"
+            CompactModeThresholdWidth="560"
+            CompactPaneLength="0"
+            ExpandedModeThresholdWidth="1008">
+
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="gui" Content="GUI Test"/>
                 <NavigationViewItem Tag="display" Content="Advanced Display"/>
                 <NavigationViewItem Tag="sdk" Content="Get SDK items"/>
                 <NavigationViewItem Tag="smithchart" Content="Smith Chart Printer"/>
                 <NavigationViewItem Tag="convert" Content="To Engineering"/>
-                <NavigationViewItem Tag="tiles" Content="Tile Pinner"/>
+                <NavigationViewItem Tag="web" Content="Web View"/>
+
             </NavigationView.MenuItems>
 
-          
-                <Frame x:Name="fr_view" Grid.Column="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  Padding="24">
-                    <Frame.ContentTransitions>
-                        <TransitionCollection>
-                            <NavigationThemeTransition >
-                                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
-                                    <DrillInNavigationTransitionInfo/>
-                                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
-                            </NavigationThemeTransition>
-                        </TransitionCollection>
-                    </Frame.ContentTransitions>
-                </Frame>
+            <NavigationView.Content>
+                <StackPanel>
+                    <Rectangle Width="120" Height="32" Fill="Orange" Tapped="Rectangle_Tapped" Tag="rect" />
+                    <Frame x:Name="fr_view" Grid.Column="1" 
+                   Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+                   Padding="24"/>
+                </StackPanel>
+            </NavigationView.Content>
+
         </NavigationView>
     </Grid>
 </Page>

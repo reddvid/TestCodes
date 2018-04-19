@@ -24,9 +24,6 @@ namespace CodeTester
     /// </summary>
     sealed partial class App : Application
     {
-        private string OPNumber;
-        bool CalledFromSecondaryTile = false;
-        public string _urischeme;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -46,8 +43,6 @@ namespace CodeTester
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
-            // Depending on tile_id and tile_arguments navigate to the page you want
-
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -64,12 +59,6 @@ namespace CodeTester
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
-
-                SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                        rootFrame.CanGoBack ?
-                        AppViewBackButtonVisibility.Visible :
-                        AppViewBackButtonVisibility.Collapsed;
             }
 
             if (e.PrelaunchActivated == false)
@@ -85,7 +74,6 @@ namespace CodeTester
                 Window.Current.Activate();
             }
         }
-
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
@@ -108,26 +96,6 @@ namespace CodeTester
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
-        }
-
-        private void OnNavigated(object sender, NavigationEventArgs e)
-        {
-            // Each time a navigation event occurs, update the Back button's visibility
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                ((Frame)sender).CanGoBack ?
-                AppViewBackButtonVisibility.Visible :
-                AppViewBackButtonVisibility.Collapsed;
-        }
-
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame.CanGoBack)
-            {
-                e.Handled = true;
-                rootFrame.GoBack();
-            }
         }
     }
 }

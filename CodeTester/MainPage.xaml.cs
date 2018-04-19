@@ -1,19 +1,11 @@
-﻿using Microsoft.Toolkit.Uwp.Helpers;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Core;
+using System.Threading.Tasks;
+using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Shapes;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -29,6 +21,8 @@ namespace CodeTester
         public MainPage()
         {
             this.InitializeComponent();
+
+            nvMain.Header = "Test";
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -61,6 +55,9 @@ namespace CodeTester
                     fr_view.Navigate(typeof(TilePinner));
                     break;
 
+                case "web":
+                    Frame.Navigate(typeof(WebViewer), item.Tag);
+                    break;
             }
         }
 
@@ -68,16 +65,11 @@ namespace CodeTester
         {
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-        }
-
         private void hl_advanced_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdvancedBrightness));
         }
-          
+
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -86,7 +78,7 @@ namespace CodeTester
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
             // set the initial SelectedItem 
-            foreach (NavigationViewItem item in (sender as NavigationView).MenuItems)
+            foreach (NavigationViewItemBase item in (sender as NavigationView).MenuItems)
             {
                 if (item is NavigationViewItem && item.Tag.ToString() == "gui")
                 {
@@ -94,6 +86,41 @@ namespace CodeTester
                     break;
                 }
             }
+        }
+
+        private async void AddItem()
+        {
+            NavigationViewItem item = new NavigationViewItem()
+            {
+                Content = "Hello",
+                Tag = "hello"
+            };
+            nvMain.MenuItems.Add(item);
+            await Task.Delay(500);
+            SelectAddedItem(item);
+        }
+
+        private void SelectAddedItem(NavigationViewItem item)
+        {
+            foreach (NavigationViewItemBase i in nvMain.MenuItems)
+            {
+                if (i is NavigationViewItem && i.Tag.ToString() == item.Tag.ToString())
+                {
+                    nvMain.SelectedItem = i;
+                    break;
+                }
+            }
+        }
+
+        private void nvMain_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        {
+            AddItem();
+        }
+
+        private void Rectangle_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var id = (sender as Rectangle).Tag as string;
+            Frame.Navigate(typeof(WebViewer), id);
         }
     }
 }

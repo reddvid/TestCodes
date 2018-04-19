@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Security.Authentication.Web;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,31 +23,26 @@ namespace CodeTester
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class GUI : Page
+    public sealed partial class WebViewer : Page
     {
-        public GUI()
+        public WebViewer()
         {
             this.InitializeComponent();
         }
 
-        private async void btnShowDialog_Click(object sender, RoutedEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            SampleDialog sampleDialog = new SampleDialog();
-            await sampleDialog.ShowAsync();
+            base.OnNavigatedTo(e);
+
+            string text = e.Parameter as string;
+            Debug.WriteLine(text);
+
+            await Task.CompletedTask;
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private async void wbView_Loaded(object sender, RoutedEventArgs e)
         {
-          
-        }
-
-        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            try
-            {
-                txtDescription.Text = txtKG.Text;
-            }
-           catch { }
+            wbView.Navigate(new Uri("https://securitybankonline.securitybank.com/login"));
         }
     }
 }
