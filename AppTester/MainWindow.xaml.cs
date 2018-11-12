@@ -45,5 +45,14 @@ namespace AppTester
         {
             tb_status.Text = data;
         }
+
+        public void MultipleCursorInVisualStudio()
+        {
+            string sampleStringIAddedThis = "Sample stringI also added this!";
+            string ulolTestsIAddedThis = "Dragon Ball";
+            string viceGandaIAddedThis = "I also added this!";
+
+            string jakePeralta = "Noice!";
+        }
     }
 }

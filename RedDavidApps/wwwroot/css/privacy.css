@@ -1,0 +1,49 @@
+body { 
+    margin: 0;
+    background: #323232;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 5px;
+    margin: 0 auto;
+    position: center; 
+    float: inherit;
+    background: #323232;
+}
+
+#privacy_content {
+    position: center;
+    padding: 24px auto;
+   overflow-y: scroll; 
+   max-height: 100vh;
+}
+
+#privacy_content p {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+#privacy_content p#header{
+    padding-left: 24px;
+    padding-right: 24px;  
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+    outline: none;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+}
+
+.mdl-card__supporting-text{
+background-color: #dedede;
+padding: 56px auto;
+}
+
+    .page ul.navigation li {
+        margin: 0 12px 10px;
+        display: inline;
+    }

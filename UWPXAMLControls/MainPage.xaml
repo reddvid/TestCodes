@@ -1,0 +1,366 @@
+﻿<Page
+    x:Class="UWPXAMLControls.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UWPXAMLControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <RevealBorderBrush
+            x:Key="MyRevealBorderBrush"
+            FallbackColor="{ThemeResource SystemAccentColor}"
+            TargetTheme="Dark"
+            Color="{ThemeResource SystemAccentColor}" />
+        <RevealBackgroundBrush
+            x:Key="MyRevealBackgroundBrush"
+            FallbackColor="{StaticResource SystemAccentColor}"
+            TargetTheme="Light"
+            Color="{StaticResource SystemAccentColor}" />
+
+
+        <Style x:Key="CircularButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+            <!--<Setter Property="BorderBrush" Value="{ThemeResource ButtonRevealBorderBrush}" />-->
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
+            <Setter Property="Padding" Value="8,4,8,4" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+            <Setter Property="FocusVisualMargin" Value="-3" />
+            <Setter Property="MinHeight" Value="48" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid
+                            x:Name="RootGrid"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{ThemeResource ButtonRevealBorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="999">
+                            <ContentPresenter
+                                x:Name="ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                AutomationProperties.AccessibilityView="Raw"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentTransitions="{TemplateBinding ContentTransitions}" />
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.(RevealBrush.State)" Value="PointerOver" />
+                                            <Setter Target="RootGrid.Background" Value="{ThemeResource MyRevealBackgroundBrush}" />
+                                            <Setter Target="ContentPresenter.BorderBrush" Value="Transparent" />
+                                            <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundPointerOver}" />
+                                        </VisualState.Setters>
+
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.(RevealBrush.State)" Value="Pressed" />
+                                            <Setter Target="RootGrid.Background" Value="{ThemeResource SystemAccentColor}" />
+                                            <!--<Setter Target="ContentPresenter.BorderBrush" Value="{ThemeResource ButtonRevealBackgroundPressed}" />
+                                            <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundPressed}" />-->
+                                        </VisualState.Setters>
+
+                                        <Storyboard>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <VisualState.Setters>
+                                            <Setter Target="RootGrid.Background" Value="{ThemeResource ButtonRevealBackgroundDisabled}" />
+                                            <Setter Target="ContentPresenter.BorderBrush" Value="{ThemeResource ButtonRevealBorderBrushDisabled}" />
+                                            <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundDisabled}" />
+                                            <Setter Target="RootGrid.Opacity" Value="0.5" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*" />
+            <RowDefinition Height="467*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="103*" />
+            <ColumnDefinition Width="397*" />
+        </Grid.ColumnDefinitions>
+        <ToggleSwitch OffContent="Light Mode" OnContent="Dark Mode" />
+        <Grid
+            x:Name="Acrylics"
+            Grid.Row="1"
+            Grid.Column="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="Assets/P_20180623_094307.jpg" Stretch="UniformToFill" />
+            </Grid.Background>
+            <VariableSizedWrapGrid MaximumRowsOrColumns="15">
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlAccentAcrylicElementAccentMediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlAccentAcrylicWindowAccentMediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAccentDark1AcrylicElementAccentDark1Brush}"
+                    ToolTipService.ToolTip="SystemControlAccentDark1AcrylicElementAccentDark1Brush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAccentDark1AcrylicWindowAccentDark1Brush}"
+                    ToolTipService.ToolTip="SystemControlAccentDark1AcrylicWindowAccentDark1Brush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlAccentDark2AcrylicElementAccentDark2MediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlAccentDark2AcrylicWindowAccentDark2MediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAcrylicElementBrush}"
+                    ToolTipService.ToolTip="SystemControlAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlAcrylicElementMediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                    ToolTipService.ToolTip="SystemControlAcrylicWindowBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlAcrylicWindowMediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAltHighAcrylicElementBrush}"
+                    ToolTipService.ToolTip="SystemControlAltHighAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAltHighAcrylicWindowBrush}"
+                    ToolTipService.ToolTip="SystemControlAltHighAcrylicWindowBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAltLowAcrylicElementBrush}"
+                    ToolTipService.ToolTip="SystemControlAltLowAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAltLowAcrylicWindowBrush}"
+                    ToolTipService.ToolTip="SystemControlAltLowAcrylicWindowBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlAltLowAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlAltMediumLowAcrylicWindowMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlAltMediumLowAcrylicWindowMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseHighAcrylicElementBrush}"
+                    ToolTipService.ToolTip="SystemControlAltLowAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseHighAcrylicElementMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseHighAcrylicElementMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseHighAcrylicElementMediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseHighAcrylicElementMediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseHighAcrylicWindowBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseHighAcrylicWindowBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseHighAcrylicWindowMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseHighAcrylicWindowMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseHighAcrylicWindowMediumHighBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseHighAcrylicWindowMediumHighBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseLowAcrylicElementBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseLowAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseLowAcrylicWindowBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseLowAcrylicWindowBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseMediumLowAcrylicElementMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlBaseMediumLowAcrylicWindowMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlBaseMediumLowAcrylicWindowMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeHighAcrylicElementMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeHighAcrylicWindowMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeHighAcrylicWindowMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeLowAcrylicElementBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeLowAcrylicWindowBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeMediumAcrylicElementMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeMediumAcrylicWindowMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeMediumLowAcrylicElementMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeMediumLowAcrylicElementMediumBrush" />
+                <Border
+                    Width="200"
+                    Height="120"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}"
+                    ToolTipService.ToolTip="SystemControlChromeMediumLowAcrylicWindowMediumBrush" />
+
+            </VariableSizedWrapGrid>
+        </Grid>
+        <StackPanel Grid.Row="1">
+            <Button
+                Margin="24"
+                Background="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"
+                Content="Hello this is a rounded button"
+                Style="{StaticResource CircularButton}" />
+            <StackPanel
+                Padding="24"
+                Orientation="Horizontal"
+                Spacing="12">
+                <Button
+                    Width="64"
+                    Height="64"
+                    Content="&#xE8C8;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="18"
+                    Style="{StaticResource CircularButton}" />
+                <Button
+                    Width="64"
+                    Height="64"
+                    Content="🐱"
+                    FontSize="24"
+                    Style="{StaticResource CircularButton}" />
+                <Button
+                    Width="64"
+                    Height="64"
+                    Content="💩"
+                    FontSize="24"
+                    IsEnabled="False"
+                    Style="{StaticResource CircularButton}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

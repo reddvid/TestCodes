@@ -1,8 +1,9 @@
 ﻿/* Website template by freewebsitetemplates.com */
 /*------------------------- Layout styles ------------------------*/
-body {
+body { 
     margin: 0;
-    background: #dedede;
+    background: #323232;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .page {
@@ -10,21 +11,11 @@ body {
     max-width: 1200px;
     padding: 0 5px;
     margin: 0 auto;
-    position: center;
-    background: #dedede;
+    position: center; 
+    float: inherit;
+    background: #323232;
 }
 
-/*------------------------- Font ------------------------*/
-@font-face {
-    font-family: 'RokkittRegular';
-    font-family: 'RokkittRegular';
-    src: url('../fonts/rokkitt-regular-webfont.eot');
-    src: url('../fonts/rokkitt-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/rokkitt-regular-webfont.woff') format('woff'), url('../fonts/rokkitt-regular-webfont.ttf') format('truetype'), url('../fonts/rokkitt-regular-webfont.svg#RokkittRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/*------------------------- Sidebar ------------------------*/
 .content {    
     height: 100%;
     top: 0; /* Stay at the top */
@@ -35,9 +26,20 @@ body {
 }
 
     .content h2 {
-        color: #cf3d01;
-        font-family: RokkittRegular;
+        color: #dedede;        
         font-size: 28px;
+        font-weight: 700;
+        line-height: 36px;
+        outline: none;
+        text-decoration: none;
+        position: relative;
+        text-align: center;
+        padding: 24px 0 0 0;
+    }
+
+    .content p#subtitle {
+        color: #a0a0a0;        
+        font-size: 18px;
         font-weight: 700;
         line-height: 36px;
         outline: none;
@@ -70,30 +72,20 @@ body {
     .content ul.navigation {
         background: url(../images/border-dashed.gif) repeat-x left bottom;
         list-style: none;
-        margin: 40px auto;
+        margin: 20px auto;
         padding: 0;
         text-align: center;
         position: relative;
     }
 
         .content ul.navigation li {
-            height: 36px;
+            height: 28px;
             margin: 0 0 10px;
         }
-
-            .content ul.navigation li.selected {
-                background: url(../images/interface.gif) no-repeat;
-            }
-
-                .content ul.navigation li.selected a, .content ul.navigation li a:hover {
-                    color: #801002;
-                }
-
+          
             .content ul.navigation li a {
-                color: #cf3d01;
-                font-family: RokkittRegular;
-                font-size: 24px;
-                font-weight: 700;
+                color: #dedede;
+                font-size: 16px;
                 line-height: 36px;
                 outline: none;
                 text-decoration: none;
@@ -138,8 +130,7 @@ body {
             }
 
     .content p {
-        color: #f99d20;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #f99d20;  
         font-size: 12px;
         margin: 24px auto;
         text-align: center;
