@@ -62,8 +62,8 @@
     <ApplicationIcon>rmi_icon_soR_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
     <Content Include="rmi_icon_soR_icon.ico" />
     <Content Include="Zipfiles\rmwcore.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -88,6 +87,7 @@
     <Content Include="Zipfiles\rmw1166eng.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="packages.config" />
     <None Include="RadioMobile_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
