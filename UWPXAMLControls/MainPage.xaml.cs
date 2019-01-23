@@ -25,6 +25,27 @@ namespace UWPXAMLControls
         public MainPage()
         {
             this.InitializeComponent();
+
+            
+        }
+
+        private void MyScroll_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+        {
+            ScrollValue.Text = "Vertical Offset: " + e.FinalView.VerticalOffset.ToString() + "\nHorizontal Offset: " + e.FinalView.HorizontalOffset.ToString() + "\nVerticalHeight: " + MyScroll.ScrollableHeight;
+
+            double vOffset = e.FinalView.VerticalOffset;
+            double scrollHeight = MyScroll.ScrollableHeight;
+
+            // If 0 yung vOffset dapat max yung shape
+            if (vOffset == 0)
+            {
+                MyShape.Height = MyShape.Width = 200;
+            }
+            else if (((scrollHeight - vOffset) / scrollHeight) >= 0.4)
+            {
+                MyShape.Height = MyShape.Width = ((scrollHeight - vOffset) / scrollHeight) * 200;
+            }
+            // Kapag umabot sa 40 percent yung scroll, unti-unting liliit upto 50%
         }
     }
 }

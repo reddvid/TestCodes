@@ -2,6 +2,7 @@
     x:Class="UWPXAMLControls.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:UWPXAMLControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -107,8 +108,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="33*" />
-            <RowDefinition Height="467*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="15*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="103*" />
@@ -118,7 +120,8 @@
         <Grid
             x:Name="Acrylics"
             Grid.Row="1"
-            Grid.Column="1">
+            Grid.Column="1"
+            Visibility="Collapsed">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/P_20180623_094307.jpg" Stretch="UniformToFill" />
             </Grid.Background>
@@ -330,7 +333,7 @@
 
             </VariableSizedWrapGrid>
         </Grid>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" VerticalAlignment="Top">
             <Button
                 Margin="24"
                 Background="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"
@@ -362,5 +365,30 @@
                     Style="{StaticResource CircularButton}" />
             </StackPanel>
         </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="ScrollValue" />
+            <ScrollViewer
+                x:Name="MyScroll"
+                Grid.Row="1"
+                VerticalAlignment="Stretch"
+                ViewChanging="MyScroll_ViewChanging">
+                <Rectangle
+                    Width="20"
+                    Height="1000"
+                    Fill="Orange" />
+            </ScrollViewer>
+        </Grid>
+
+        <Ellipse
+            x:Name="MyShape"
+            Grid.RowSpan="3"
+            Grid.Column="1"
+            Width="200"
+            Height="200"
+            Fill="Red" />
     </Grid>
 </Page>
