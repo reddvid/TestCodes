@@ -7,6 +7,15 @@
 *.userosscache
 *.sln.docstates
 RPNWebsiteTools/
+App1/
+Backup/
+LBCExTracker/
+LBCExTrackerApp/
+packages/
+RadioStats/
+RichTest.Forms/
+*.bat
+*.htm
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
