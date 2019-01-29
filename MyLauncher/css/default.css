@@ -1,0 +1,65 @@
+﻿body {
+  /* Uncomment this to enable scrolling and zooming
+  touch-action: manipulation;
+  */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-size: 16px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b3dced+0,29b8e5+50,bce0ee+100;Blue+Pipe */
+  background: #b3dced;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+  background-repeat: no-repeat;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  transition: 500ms;
+}
+
+.appgrid {
+  margin: 120px auto;
+  display: flex;
+  max-width: 240px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.appgrid a {
+  text-decoration: none;
+}
+
+.item-wrapper {
+  cursor: pointer;
+  height: 30px;
+  background: #ece8e8;
+  width: 30px;
+  padding: 10px;
+  margin: 10px;
+  transition: 400ms;
+}
+
+.item-wrapper:hover {
+  background: #0378e6;
+  transition: 300ms;
+  padding: 11px;
+  box-shadow: 5px 0px 40px rgba(51, 51, 51, 0.2),
+    -5px 0px 40px rgba(51, 51, 51, 0.2);
+}
+
+.item-wrapper img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
