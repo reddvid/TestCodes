@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AnTexer.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AnTexer"
+    x:Name="RootLayout">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="LightItem">
+            <ViewCell>
+                <StackLayout Padding="15,5">
+                    <Label
+                        FontSize="12"
+                        Text="{Binding StyleType}"
+                        TextColor="Accent" />
+                    <Label
+                        x:Name="LblContent"
+                        FontSize="Large"
+                        Text="{Binding TextResult}"
+                        TextColor="#222" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="DarkItem">
+            <ViewCell>
+                <StackLayout Padding="15,5">
+                    <Label
+                        FontSize="12"
+                        Text="{Binding StyleType}"
+                        TextColor="Accent" />
+                    <Label
+                        x:Name="LblContent"
+                        FontSize="Large"
+                        Text="{Binding TextResult}"
+                        TextColor="#eee" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <StackLayout>
+        <StackLayout
+            Margin="15,15,15,10"
+            HorizontalOptions="End"
+            Orientation="Horizontal">
+            <Switch
+                x:Name="ThemeTggle"
+                IsToggled="True"
+                OnColor="Accent"
+                Toggled="ThemeTggle_Toggled" />
+            <Label
+                x:Name="LblSwitch"
+                Text="Dark mode"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+
+        <Editor
+            x:Name="InputBox"
+            HeightRequest="150"
+            Placeholder="Enter text"
+            TextChanged="InputBox_TextChanged"
+            VerticalOptions="EndAndExpand" />
+
+        <ListView x:Name="ResultsGrid" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,5">
+                            <Label
+                                FontSize="12"
+                                Text="{Binding StyleType}"
+                                TextColor="Accent" />
+                            <Label
+                                x:Name="LblContent"
+                                FontSize="Large"
+                                Text="{Binding TextResult}"
+                                TextColor="#eee" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+
+</ContentPage>

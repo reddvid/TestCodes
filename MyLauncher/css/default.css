@@ -24,10 +24,12 @@
   transition: 500ms;
 }
 
-.appgrid {
-  margin: 120px auto;
+.appgrid {  
   display: flex;
-  max-width: 240px;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto; 
+  max-width: 320px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -42,7 +44,7 @@
   height: 30px;
   background: #ece8e8;
   width: 30px;
-  padding: 10px;
+  padding: 25px;
   margin: 10px;
   transition: 400ms;
 }
@@ -50,7 +52,7 @@
 .item-wrapper:hover {
   background: #0378e6;
   transition: 300ms;
-  padding: 11px;
+  padding: 25px;
   box-shadow: 5px 0px 40px rgba(51, 51, 51, 0.2),
     -5px 0px 40px rgba(51, 51, 51, 0.2);
 }
@@ -59,7 +61,9 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
-  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+  margin-top: 1px;
   margin-bottom: 10px;
 }
+

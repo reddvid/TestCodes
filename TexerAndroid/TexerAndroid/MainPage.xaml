@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TexerAndroid.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TexerAndroid"
+    Title="Texer">
+
+    <StackLayout>
+
+        <Editor x:Name="InputBox" TextChanged="InputBox_TextChanged" />
+
+
+        <ListView x:Name="ResultsGrid">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label FontSize="12" Text="{Binding StyleType}" />
+                            <Label Text="{Binding TextResult}" />
+                            <Button Grid.Column="1" Text="Copy" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
