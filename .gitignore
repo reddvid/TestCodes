@@ -6,7 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-RPNWebsiteTools/
+RPNWebsiteTools/Classes/ApiKeys.cs
 App1/
 Backup/
 LBCExTracker/

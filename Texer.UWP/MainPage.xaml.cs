@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Texer.UWP.Helpers;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
@@ -27,6 +29,7 @@ namespace Texer.UWP
     public sealed partial class MainPage : Page
     {
         char[] alpha = null;
+        string[] alphaShit = null;
 
         string[,] charArray = null;
 
@@ -37,6 +40,7 @@ namespace Texer.UWP
             this.InitializeComponent();
 
             alpha = new Styles().alpha;
+            alphaShit = new Styles().alphaShit;
             charArray = new Styles().charArray;
 
             results = new ObservableCollection<StyleItem>();
@@ -56,12 +60,14 @@ namespace Texer.UWP
             string dark = "";
             string circle = "";
             string thin = "";
+            string utf = "";
 
             foreach (char c in InputBox.Text)
             {
                 int alphaIndex = Array.IndexOf(alpha, c);
 
                 Debug.WriteLine(alphaIndex);
+                Debug.WriteLine(c);
 
                 if (alphaIndex != -1)
                 {
@@ -75,6 +81,12 @@ namespace Texer.UWP
                     dark += charArray[alphaIndex, 7];
                     circle += charArray[alphaIndex, 8];
                     thin += charArray[alphaIndex, 9];
+                    //utf += Convert(c.ToString());
+                }
+                else if (Array.IndexOf(alphaShit, c) > -1)
+                {
+                    int shitIndex = Array.IndexOf(alphaShit, c);
+                    utf += alpha[shitIndex];
                 }
                 else
                 {
@@ -88,7 +100,8 @@ namespace Texer.UWP
                     dark += c;
                     circle += c;
                     thin += c;
-                }                
+                    //utf += Convert(c.ToString());
+                }
             }
 
             results.Add(new StyleItem("Bold", bold));
@@ -101,8 +114,16 @@ namespace Texer.UWP
             results.Add(new StyleItem("Script", script));
             results.Add(new StyleItem("Tiny", super));
             results.Add(new StyleItem("Small Caps", small));
-
+            results.Add(new StyleItem("UTF-8", utf));
             ResultsGrid.ItemsSource = results;
+        }
+
+        private string Convert(string c)
+        {
+            string accentedStr;
+            byte[] tempBytes;
+            tempBytes = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(c);
+            return System.Text.Encoding.ASCII.GetString(tempBytes);
         }
 
         private void BtnCopy_Click(object sender, RoutedEventArgs e)

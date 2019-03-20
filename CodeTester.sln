@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28714.193
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppTester", "AppTester\AppTester.csproj", "{BDBCECDB-5A36-4643-9331-2DD7BE231A7C}"
 EndProject
@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TexerAndroid", "TexerAndroi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnTexer.Android", "AnTexer\AnTexer.Android\AnTexer.Android.csproj", "{5B138E34-A679-4FE5-97B6-7D7D60342256}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnTexer", "AnTexer\AnTexer\AnTexer.csproj", "{7F119C74-DFD8-457B-94E7-F42AF5A2D668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnTexer", "AnTexer\AnTexer\AnTexer.csproj", "{7F119C74-DFD8-457B-94E7-F42AF5A2D668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelp", "TestHelp\TestHelp.csproj", "{50464110-6CD3-4E4B-A85E-2D05116827FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -493,6 +495,26 @@ Global
 		{7F119C74-DFD8-457B-94E7-F42AF5A2D668}.Release|x64.Build.0 = Release|Any CPU
 		{7F119C74-DFD8-457B-94E7-F42AF5A2D668}.Release|x86.ActiveCfg = Release|Any CPU
 		{7F119C74-DFD8-457B-94E7-F42AF5A2D668}.Release|x86.Build.0 = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Debug|x86.Build.0 = Debug|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|ARM.Build.0 = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|ARM64.Build.0 = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|x64.Build.0 = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{50464110-6CD3-4E4B-A85E-2D05116827FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
